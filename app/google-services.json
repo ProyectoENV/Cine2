@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "22397245398",
+    "project_id": "proyecto-cine-1ec64",
+    "storage_bucket": "proyecto-cine-1ec64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22397245398:android:b74ccad7031b22c24cb677",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_cine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22397245398-a0qv6hpef1ltvpbk7im5m83vnta85n1b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMjBgJcr0utlBXJNUxiTMgacmaA578AzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22397245398-a0qv6hpef1ltvpbk7im5m83vnta85n1b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
