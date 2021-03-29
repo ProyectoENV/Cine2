@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".ActivityLogin" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
