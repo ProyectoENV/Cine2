@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private String Director;
     private String Sinopsis;
     private String Imagen ;
+    private int Año;
     private java.lang.String Genero;
     //Recyclerview
     private RecyclerView recyclerView;
@@ -61,14 +62,16 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        //final TextView textView = root.findViewById(R.id.text_home);
-
         mDataBase = FirebaseDatabase.getInstance().getReference();
 
-        //Lista_peliculas = new ArrayList<Pelicula>();
-        //cardview = (CardView) root.findViewById(R.id.cardView);
-        //layoutManager = new LinearLayoutManager(getContext());
-        //recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
+        Lista_peliculas = new ArrayList<Pelicula>();
+        cardview = (CardView) root.findViewById(R.id.cardView);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         ET_Buscador =  root.findViewById(R.id.BuscadorText);
         BT_Buscador = (Button) root.findViewById(R.id.BotonBuscar);
         BT_Buscador.setOnClickListener(new View.OnClickListener() {
@@ -84,33 +87,33 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //readPelicula();
+        readPelicula();
 
 
         return root;
     }
-    /*private void readPelicula() {
-        mDataBase.child("Peliculas").addValueEventListener(new ValueEventListener() {
+    private void readPelicula() {
+        mDataBase.child("Pelicula").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
                     Lista_peliculas.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Nombre = ds.child("name").getValue().toString();
+                        Nombre = ds.child("Titulo").getValue().toString();
                         Director = ds.child("Director").getValue().toString();
                         Sinopsis = ds.child("Sinopsis").getValue().toString();
-                        Genero =  ds.child("genero").getValue().toString();
-                        Imagen =  ds.child("imagen").getValue().toString();
-                        id = ds.getKey();
+                        Genero =  ds.child("Genero").getValue().toString();
+                        Año =  Integer.parseInt(ds.child("Año").getValue().toString());
+                        Imagen =  ds.child("Imagen").getValue().toString();
 
-                        Pelicula pelicula = new Pelicula(id, Nombre, Director, Sinopsis, Genero, Imagen);
+                        Pelicula pelicula = new Pelicula( Nombre, Director, Sinopsis, Genero, Imagen,Año);
                         Lista_peliculas.add(pelicula);
 
                     }
                 }
 
-                 P_Adapter= new Adapter_pelicula(Lista_peliculas, R.layout.recyclerview_item_pelicula, new Adapter_pelicula.OnItemClickListener(){
+                 P_Adapter= new Adapter_pelicula(Lista_peliculas, R.layout.recyclerviewitem, new Adapter_pelicula.OnItemClickListener(){
                      @Override
                      public void onItemClick(Pelicula city, int position) {
 
@@ -133,5 +136,5 @@ public class HomeFragment extends Fragment {
 
         });
 
-    }*/
+    }
 }

@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="265dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="-1dp"
         android:text="Buscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,13 +28,25 @@
         android:layout_alignTop="@+id/BotonBuscar"
         android:layout_alignBottom="@+id/BotonBuscar"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="1dp"
         android:layout_toStartOf="@+id/BotonBuscar"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="395dp"
+        android:layout_height="524dp"
+        android:layout_below="@+id/BuscadorText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="0dp"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>
