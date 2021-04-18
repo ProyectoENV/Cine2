@@ -27,12 +27,14 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEditTextEmailRegister;
     private EditText mEditTextPasswordRegister;
     private EditText mEditTextNameRegister;
+    private EditText mEditTextFotoRegister;
     private Button btnRegistrarRegister;
 
     //Variables de los datos
     private String name = "";
     private String email = "";
     private String password = "";
+    private String urlfoto = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEditTextNameRegister = (EditText) findViewById(R.id.NameEditTextRegister);
         mEditTextEmailRegister = (EditText) findViewById(R.id.EmailEditTextRegister);
         mEditTextPasswordRegister = (EditText) findViewById(R.id.PasswordEditTextRegister);
+        mEditTextFotoRegister = (EditText) findViewById(R.id.FotoEditTextRegister);
         btnRegistrarRegister = (Button) findViewById(R.id.BtnRegistarRegister);
 
         btnRegistrarRegister.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 name = mEditTextNameRegister.getText().toString();
                 email = mEditTextEmailRegister.getText().toString();
                 password = mEditTextPasswordRegister.getText().toString();
+                urlfoto = mEditTextFotoRegister.getText().toString();
 
                 if(!email.isEmpty() && !password.isEmpty() && !name.isEmpty()){
 
@@ -85,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 map.put("name", name);
                 map.put("email", email);
                 map.put("password", password);
+                map.put("foto", urlfoto);
 
                 String id = mAuth.getCurrentUser().getUid();
 
