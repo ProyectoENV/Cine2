@@ -5,23 +5,31 @@ import com.google.gson.annotations.SerializedName;
 public class Pelicula {
     private String id;
     @SerializedName("Title")
-    private String Nombre;
+    private String Titulo;
     @SerializedName("Director")
     private String Director;
     @SerializedName("Plot")
     private String Sinopsis;
     @SerializedName("Genre")
-    private String genero;
+    private String Genero;
     @SerializedName("Poster")
     private String Imagen;
     @SerializedName("Released")
     private int Año;
-
     public Pelicula( String nombre, String director, String sinopsis, String genero, String imagen, int año) {
-        Nombre = nombre;
+        Titulo = nombre;
         Director = director;
         Sinopsis = sinopsis;
-        this.genero = genero;
+        this.Genero = genero;
+        Imagen = imagen;
+        Año = año;
+    }
+    public Pelicula( String Id,String nombre, String director, String sinopsis, String genero, String imagen, int año) {
+        Id =id;
+        Titulo = nombre;
+        Director = director;
+        Sinopsis = sinopsis;
+        this.Genero = genero;
         Imagen = imagen;
         Año = año;
     }
@@ -31,7 +39,7 @@ public class Pelicula {
     }
 
     public String getNombre() {
-        return Nombre;
+        return Titulo;
     }
 
     public String getDirector() {
@@ -43,7 +51,7 @@ public class Pelicula {
     }
 
     public String getGenero() {
-        return genero;
+        return Genero;
     }
 
     public String getImagen() {
