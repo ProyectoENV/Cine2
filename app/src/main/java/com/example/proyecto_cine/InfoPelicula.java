@@ -42,16 +42,22 @@ public class InfoPelicula extends AppCompatActivity {
 
     private FilmService service;
     private Call<Pelicula> FilmCall;
+
+    //Insercion de datos
+    private boolean insertardatos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_pelicula);
         mAuth = FirebaseAuth.getInstance();
-        mDataBase = FirebaseDatabase.getInstance().getReference();
+        mDataBase = FirebaseDatabase.getInstance().getReference().child("Pelicula");
+
+
         Intent intentRecibir  = getIntent();
         if(intentRecibir.hasExtra("Titulo")) {
             Bundle traertitulo = intentRecibir.getExtras();
             titulo = traertitulo.getString("Titulo");
+            insertardatos = traertitulo.getBoolean("insertardatos");
         }else{
             Toast.makeText(InfoPelicula.this, "Fallo ",Toast.LENGTH_LONG);
         }
@@ -99,23 +105,11 @@ public class InfoPelicula extends AppCompatActivity {
         Genero.setText("Genero: "+Peli.getGenero());
         Año.setText("Año de lanzamiento: "+Peli.getAño());
         Picasso.get().load(Peli.getImagen()).fit().into(Poster);
+        if(Peli.getAño()==2021&&insertardatos==true){
+            mDataBase.push().setValue(Peli);
+        }
         if(Peli.getAño()==2021){
             Reserva21.setVisibility(View.VISIBLE);
-            Map<String, Object> map = new HashMap<>();
-            map.put("Titulo",Peli.getNombre());
-            map.put("Director",Peli.getDirector());
-            map.put("Sinopsis",Peli.getSinopsis());
-            map.put("Genero",Peli.getGenero());
-            map.put("Año",Peli.getAño());
-            map.put("Imagen",Peli.getImagen());
-            String id  =mAuth.getUid() ;
-            mDataBase.child("Pelicula").child(id).setValue(map).addOnCompleteListener(task -> {
-                if(task.isSuccessful()){
-                    Toast.makeText(InfoPelicula.this, "El Pelicula se ha creado corectamente", Toast.LENGTH_SHORT).show();
-                }else{
-
-                }
-            });
         }
     }
 

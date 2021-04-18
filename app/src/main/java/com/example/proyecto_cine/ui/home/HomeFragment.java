@@ -81,8 +81,10 @@ public class HomeFragment extends Fragment {
                 if(Pelicula_buscar=="" || Pelicula_buscar.equals("Name")){
                     Toast.makeText(getContext(),"Introduzca el titulo de una pelicula", Toast.LENGTH_LONG);
                 }else{
+                    boolean insertardatos = true;
                 Intent intentinfo = new Intent(getActivity(), InfoPelicula.class);
                 intentinfo.putExtra("Titulo",Pelicula_buscar);
+                intentinfo.putExtra("insertardatos", insertardatos);
                 startActivity(intentinfo);}
             }
         });
@@ -100,14 +102,14 @@ public class HomeFragment extends Fragment {
                 if (dataSnapshot.exists()) {
                     Lista_peliculas.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Nombre = ds.child("Titulo").getValue().toString();
-                        Director = ds.child("Director").getValue().toString();
-                        Sinopsis = ds.child("Sinopsis").getValue().toString();
-                        Genero =  ds.child("Genero").getValue().toString();
-                        Año =  Integer.parseInt(ds.child("Año").getValue().toString());
-                        Imagen =  ds.child("Imagen").getValue().toString();
-
-                        Pelicula pelicula = new Pelicula( Nombre, Director, Sinopsis, Genero, Imagen,Año);
+                        Nombre = ds.child("nombre").getValue().toString();
+                        Director = ds.child("director").getValue().toString();
+                        Sinopsis = ds.child("sinopsis").getValue().toString();
+                        Genero =  ds.child("genero").getValue().toString();
+                        Año =  Integer.parseInt(ds.child("año").getValue().toString());
+                        Imagen =  ds.child("imagen").getValue().toString();
+                        id = ds.getKey();
+                        Pelicula pelicula = new Pelicula( id,Nombre, Director, Sinopsis, Genero, Imagen,Año);
                         Lista_peliculas.add(pelicula);
 
                     }
@@ -116,7 +118,11 @@ public class HomeFragment extends Fragment {
                  P_Adapter= new Adapter_pelicula(Lista_peliculas, R.layout.recyclerviewitem, new Adapter_pelicula.OnItemClickListener(){
                      @Override
                      public void onItemClick(Pelicula city, int position) {
-
+                        boolean insertardatos= false;
+                        Intent mostarinfo = new Intent(getActivity(), InfoPelicula.class);
+                        mostarinfo.putExtra("Titulo", Nombre);
+                        mostarinfo.putExtra("insertardatos",insertardatos);
+                        startActivity(mostarinfo);
                      }
 
                 }, new Adapter_pelicula.OnButtonClickListener() {
