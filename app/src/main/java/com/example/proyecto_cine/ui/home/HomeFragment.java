@@ -83,6 +83,13 @@ public class HomeFragment extends Fragment {
                 }else{
                     boolean insertardatos = true;
                 Intent intentinfo = new Intent(getActivity(), InfoPelicula.class);
+                    String Buscar_igual ;
+                    for (Pelicula film: Lista_peliculas) {
+                        Buscar_igual =Pelicula_buscar;
+                        if(film.getNombre().equals(Buscar_igual)){
+                            insertardatos=false;
+                        }
+                    }
                 intentinfo.putExtra("Titulo",Pelicula_buscar);
                 intentinfo.putExtra("insertardatos", insertardatos);
                 startActivity(intentinfo);}
@@ -117,10 +124,10 @@ public class HomeFragment extends Fragment {
 
                  P_Adapter= new Adapter_pelicula(Lista_peliculas, R.layout.recyclerviewitem, new Adapter_pelicula.OnItemClickListener(){
                      @Override
-                     public void onItemClick(Pelicula city, int position) {
+                     public void onItemClick(Pelicula film, int position) {
                         boolean insertardatos= false;
                         Intent mostarinfo = new Intent(getActivity(), InfoPelicula.class);
-                        mostarinfo.putExtra("Titulo", Nombre);
+                        mostarinfo.putExtra("Titulo",film.getNombre() );
                         mostarinfo.putExtra("insertardatos",insertardatos);
                         startActivity(mostarinfo);
                      }
