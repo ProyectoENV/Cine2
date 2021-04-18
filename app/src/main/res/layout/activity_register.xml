@@ -34,6 +34,15 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
+    <EditText
+        android:id="@+id/FotoEditTextRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="http://inlogem.com/wp-content/uploads/2016/05/satisfaccion.png" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
