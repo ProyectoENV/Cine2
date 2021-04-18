@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String name = "";
     private String email = "";
     private String password = "";
-    private String urlfoto = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 name = mEditTextNameRegister.getText().toString();
                 email = mEditTextEmailRegister.getText().toString();
                 password = mEditTextPasswordRegister.getText().toString();
-                urlfoto = mEditTextFotoRegister.getText().toString();
+
 
                 if(!email.isEmpty() && !password.isEmpty() && !name.isEmpty()){
 
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 map.put("name", name);
                 map.put("email", email);
                 map.put("password", password);
-                map.put("foto", urlfoto);
+
 
                 String id = mAuth.getCurrentUser().getUid();
 
