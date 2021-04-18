@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_cine.Objetos.Pelicula;
+import com.example.proyecto_cine.R;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -49,21 +52,28 @@ public class Adapter_pelicula extends RecyclerView.Adapter<Adapter_pelicula.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView name;
-        public TextView Director;
+        public TextView Nombrepelicula;
         public TextView Genero;
         public TextView Sinopsis;
-        public ImageView image;
+        public ImageView Poster;
         public Button reservar;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            Nombrepelicula = (TextView) itemView.findViewById(R.id.Nombrepelicula);
+            Genero = (TextView) itemView.findViewById(R.id.Genero);
+            Sinopsis = (TextView) itemView.findViewById(R.id.Sinopsis);
+            Poster = (ImageView) itemView.findViewById(R.id.Posterpelicula);
+            reservar = (Button) itemView.findViewById(R.id.BotonCines);
 
         }
 
         public void bind(final Pelicula Pelicula, final OnItemClickListener itemListener, final OnButtonClickListener btnListener) {
-
+            Nombrepelicula.setText(Pelicula.getNombre());
+            Genero.setText(Pelicula.getGenero());
+            Sinopsis.setText(Pelicula.getSinopsis());
+            Picasso.get().load(Pelicula.getImagen()).fit().into(Poster);
             reservar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
