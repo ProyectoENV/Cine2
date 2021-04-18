@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.proyecto_cine.Api.Api;
 import com.example.proyecto_cine.Api.ApiServices.FilmService;
 import com.example.proyecto_cine.Objetos.Pelicula;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -28,6 +30,7 @@ public class InfoPelicula extends AppCompatActivity {
     private String titulo ;
 
     DatabaseReference mDataBase;
+    private FirebaseAuth mAuth;
     //ui
     private TextView Titulo;
     private TextView Director;
@@ -43,6 +46,8 @@ public class InfoPelicula extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_pelicula);
+        mAuth = FirebaseAuth.getInstance();
+        mDataBase = FirebaseDatabase.getInstance().getReference();
         Intent intentRecibir  = getIntent();
         if(intentRecibir.hasExtra("Titulo")) {
             Bundle traertitulo = intentRecibir.getExtras();
@@ -96,16 +101,21 @@ public class InfoPelicula extends AppCompatActivity {
         Picasso.get().load(Peli.getImagen()).fit().into(Poster);
         if(Peli.getAño()==2021){
             Reserva21.setVisibility(View.VISIBLE);
-            /*Map<String, Object> map = new HashMap<>();
-            map.put("Pelicula",Peli);
-
-            mDataBase.child("Pelicula").setValue(map).addOnCompleteListener(task -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("Titulo",Peli.getNombre());
+            map.put("Director",Peli.getDirector());
+            map.put("Sinopsis",Peli.getSinopsis());
+            map.put("Genero",Peli.getGenero());
+            map.put("Año",Peli.getAño());
+            map.put("Imagen",Peli.getImagen());
+            String id  =mAuth.getUid() ;
+            mDataBase.child("Pelicula").child(id).setValue(map).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     Toast.makeText(InfoPelicula.this, "El Pelicula se ha creado corectamente", Toast.LENGTH_SHORT).show();
                 }else{
 
                 }
-            });*/
+            });
         }
     }
 
