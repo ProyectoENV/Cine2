@@ -50,10 +50,11 @@ public class Adapter_pelicula extends RecyclerView.Adapter<Adapter_pelicula.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name;
-        public TextView description;
-        public TextView stars;
+        public TextView Director;
+        public TextView Genero;
+        public TextView Sinopsis;
         public ImageView image;
-        public Button btnDelete;
+        public Button reservar;
 
 
         public ViewHolder(View itemView) {
@@ -63,7 +64,7 @@ public class Adapter_pelicula extends RecyclerView.Adapter<Adapter_pelicula.View
 
         public void bind(final Pelicula Pelicula, final OnItemClickListener itemListener, final OnButtonClickListener btnListener) {
 
-            btnDelete.setOnClickListener(new View.OnClickListener() {
+            reservar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     btnListener.onButtonClick(Pelicula, getAdapterPosition());
