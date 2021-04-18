@@ -110,15 +110,16 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //metodo propio de android
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
 
         //indicamos que si el usuario ya ha inicado sesión nos rediriga a la la pastalla principal
+        String a = mAuth.getCurrentUser().getUid();
         if(mAuth.getCurrentUser() != null){
 
             startActivity(new Intent(RegisterActivity.this, MainActivity.class));
             finish();
         }
-    }
+    }*/
 }

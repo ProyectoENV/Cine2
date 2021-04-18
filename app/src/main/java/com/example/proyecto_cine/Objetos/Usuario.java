@@ -1,22 +1,33 @@
 package com.example.proyecto_cine.Objetos;
 
 public class Usuario {
-    private int Idusuario;
+    private String Idusuario;
     private String Nombre_usuario;
-    private String Password;
+    private String Email;
     private String Imagen_usuario;
     private Genero[] Preferencias;
     //private Factura[] facturas;
 
+
+    public Usuario(String idusuario, String nombre_usuario, String password, String imagen_usuario) {
+        Idusuario = idusuario;
+        Nombre_usuario = nombre_usuario;
+        Email = password;
+        Imagen_usuario = imagen_usuario;
+    }
+
     public Usuario(String nombre_usuario, String password, String imagen_usuario, Genero[] preferencias /*Factura[] facturas*/) {
         Nombre_usuario = nombre_usuario;
-        Password = password;
+        Email = password;
         Imagen_usuario = imagen_usuario;
         Preferencias = preferencias;
         //this.facturas = facturas;
     }
 
-    public int getIdusuario() {
+    public Usuario() {
+    }
+
+    public String getIdusuario() {
         return Idusuario;
     }
 
@@ -29,12 +40,12 @@ public class Usuario {
         Nombre_usuario = nombre_usuario;
     }
 
-    public String getPassword() {
-        return Password;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public void setEmail(String password) {
+        Email = password;
     }
 
     public String getImagen_usuario() {
