@@ -74,7 +74,10 @@ public class ActivityLogin extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-                    startActivity(new Intent(ActivityLogin.this, MainActivity.class));
+                    Intent intentUser = new Intent(ActivityLogin.this,MainActivity.class);
+                    intentUser.putExtra("Mail",email);
+                    startActivity(intentUser);/*
+                    startActivity(new Intent(ActivityLogin.this, MainActivity.class));*/
                     finish();
                 }else{
                     Toast.makeText(ActivityLogin.this, "No se ha podido iniciar sesion, compruebe que los datos son correctos", Toast.LENGTH_SHORT).show();

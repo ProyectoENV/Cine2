@@ -1,63 +1,60 @@
 package com.example.proyecto_cine.Objetos;
 
-public class Pelicula {
-    private int id ;
-    private String Nombre;
-    private String[] Actores;
-    private String Director;
-    private String Sinopsis;
-    private Genero genero;
+import com.google.gson.annotations.SerializedName;
 
-    public Pelicula(String nombre, String[] actores, String director, String sinopsis, Genero genero) {
+public class Pelicula {
+    private String id;
+    @SerializedName("Title")
+    private String Nombre;
+    @SerializedName("Director")
+    private String Director;
+    @SerializedName("Plot")
+    private String Sinopsis;
+    @SerializedName("Genre")
+    private String genero;
+    @SerializedName("Poster")
+    private String Imagen;
+    @SerializedName("Released")
+    private int Año;
+
+    public Pelicula( String nombre, String director, String sinopsis, String genero, String imagen, int año) {
         Nombre = nombre;
-        Actores = actores;
         Director = director;
         Sinopsis = sinopsis;
         this.genero = genero;
+        Imagen = imagen;
+        Año = año;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-
     public String getNombre() {
         return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
-
-    public String[] getActores() {
-        return Actores;
-    }
-
-    public void setActores(String[] actores) {
-        Actores = actores;
     }
 
     public String getDirector() {
         return Director;
     }
 
-    public void setDirector(String director) {
-        Director = director;
-    }
-
     public String getSinopsis() {
         return Sinopsis;
     }
 
-    public void setSinopsis(String sinopsis) {
-        Sinopsis = sinopsis;
-    }
-
-    public Genero getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public String getImagen() {
+        return Imagen;
+    }
+
+    public int getAño() {
+        return Año;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
