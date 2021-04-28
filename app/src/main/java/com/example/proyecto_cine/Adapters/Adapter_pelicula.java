@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.R;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

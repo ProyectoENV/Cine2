@@ -5,11 +5,19 @@ public class Sala {
     private int numerosala;
     private int fila;
     private int asiento;
+    private int Asientos_ocupados;
+    private int Capacidad_asientos;
+    private String Hora;
+    private String ID_CINE;
 
     public Sala(int numerosala, int fila, int asiento) {
         this.numerosala = numerosala;
         this.fila = fila;
         this.asiento = asiento;
+    }
+
+    public String getID_CINE() {
+        return ID_CINE;
     }
 
     public int getIdSala() {

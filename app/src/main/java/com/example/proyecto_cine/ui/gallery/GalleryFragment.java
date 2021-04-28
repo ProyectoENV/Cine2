@@ -117,7 +117,7 @@ public class GalleryFragment extends Fragment {
                         if(mAuth.getCurrentUser().getUid().equals(ds.getKey())){
                         Nombre = ds.child("name").getValue().toString();
                         mail = ds.child("email").getValue().toString();
-                        Imagen =  ds.child("imagen").getValue().toString();
+                        //Imagen =  ds.child("imagen").getValue().toString();
                         Id = ds.getKey();
                         user = new Usuario( Id,Nombre, mail, Imagen);
                         }
