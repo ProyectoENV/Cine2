@@ -22,7 +22,7 @@ public class Adapter_pelicula extends RecyclerView.Adapter<Adapter_pelicula.View
     private int layout;
     private OnItemClickListener itemClickListener;
     private OnButtonClickListener btnClickListener;
-
+    //push nuevo
 
     public Adapter_pelicula(List<Pelicula> Peliculas, int layout, OnItemClickListener itemListener, OnButtonClickListener btnListener) {
         this.Peliculas = Peliculas;
