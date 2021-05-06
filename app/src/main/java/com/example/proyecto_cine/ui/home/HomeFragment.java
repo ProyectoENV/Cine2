@@ -62,8 +62,10 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        //instacia bbdd
         mDataBase = FirebaseDatabase.getInstance().getReference();
 
+        //Recyclerview
         Lista_peliculas = new ArrayList<Pelicula>();
         cardview = (CardView) root.findViewById(R.id.cardView);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -71,7 +73,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-
+        //Layout buscador
         ET_Buscador =  root.findViewById(R.id.BuscadorText);
         BT_Buscador = (Button) root.findViewById(R.id.BotonBuscar);
         BT_Buscador.setOnClickListener(new View.OnClickListener() {

@@ -4,22 +4,19 @@ public class Usuario {
     private String Idusuario;
     private String Nombre_usuario;
     private String Email;
-    private String Imagen_usuario;
     private Genero[] Preferencias;
     //private Factura[] facturas;
 
 
-    public Usuario(String idusuario, String nombre_usuario, String password, String imagen_usuario) {
+    /*public Usuario(String idusuario, String nombre_usuario, String password) {
         Idusuario = idusuario;
         Nombre_usuario = nombre_usuario;
         Email = password;
-        Imagen_usuario = imagen_usuario;
-    }
+    }*/
 
-    public Usuario(String nombre_usuario, String password, String imagen_usuario, Genero[] preferencias /*Factura[] facturas*/) {
+    public Usuario(String nombre_usuario, String password , Genero[] preferencias /*Factura[] facturas*/) {
         Nombre_usuario = nombre_usuario;
         Email = password;
-        Imagen_usuario = imagen_usuario;
         Preferencias = preferencias;
         //this.facturas = facturas;
     }
@@ -48,13 +45,6 @@ public class Usuario {
         Email = password;
     }
 
-    public String getImagen_usuario() {
-        return Imagen_usuario;
-    }
-
-    public void setImagen_usuario(String imagen_usuario) {
-        Imagen_usuario = imagen_usuario;
-    }
 
     public Genero[] getPreferencias() {
         return Preferencias;
