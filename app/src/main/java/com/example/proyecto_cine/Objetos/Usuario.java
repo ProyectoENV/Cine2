@@ -5,6 +5,7 @@ public class Usuario {
     private String Nombre_usuario;
     private String Email;
     private Genero[] Preferencias;
+    //hgm
     //private Factura[] facturas;
 
 
