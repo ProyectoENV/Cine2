@@ -1,18 +1,19 @@
 package com.example.proyecto_cine.Objetos;
 
 public class Cine {
-    private int idCine;
+    private String idCine;
     private String Nombre;
     private String Localizacion;
 
-    public Cine(String nombre, String localizacion/*Pelicula[] peliculas_Cartelera, Sala[] salas_cine*/) {
+    public Cine(String idCine, String nombre, String localizacion/*Pelicula[] peliculas_Cartelera, Sala[] salas_cine*/) {
+        idCine = idCine;
         Nombre = nombre;
         Localizacion = localizacion;
         //Peliculas_Cartelera = peliculas_Cartelera;
         //this.salas_cine = salas_cine;
     }
 
-    public int getIdCine() {
+    public String getIdCine() {
         return idCine;
     }
 

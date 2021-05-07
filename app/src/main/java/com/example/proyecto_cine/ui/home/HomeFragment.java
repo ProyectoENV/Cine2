@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_cine.Adapters.Adapter_pelicula;
+import com.example.proyecto_cine.Cines.ActivityCines;
 import com.example.proyecto_cine.InfoPelicula;
 import com.example.proyecto_cine.MainActivity;
 import com.example.proyecto_cine.Objetos.Genero;
@@ -137,7 +138,9 @@ public class HomeFragment extends Fragment {
                 }, new Adapter_pelicula.OnButtonClickListener() {
                      @Override
                      public void onButtonClick(Pelicula film, int position) {
-
+                         Intent iniciar_activitiecine = new Intent(getActivity(), ActivityCines.class);
+                         iniciar_activitiecine.putExtra("id_pelicula",film.getId() );
+                         startActivity(iniciar_activitiecine);
                      }
 
                 });
