@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.proyecto_cine.ActivityLogin;
 import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.Objetos.Usuario;
 import com.example.proyecto_cine.R;
@@ -32,11 +34,8 @@ public class GalleryFragment extends Fragment {
     //UI
     private TextView Nombre_Usuario;
     private TextView Email;
-    private TextView Imagen_Texto;
-    private ImageView Foto_perfil;
     private EditText Cambiar_mail;
     private  EditText Cambiar_username;
-    private EditText Cambiar_Foto;
     private Button Boton_Editar;
     private Button Boton_Guardar;
     //Database
@@ -45,7 +44,6 @@ public class GalleryFragment extends Fragment {
     //Datos Usuario
     private String Nombre;
     private String mail;
-    private String Imagen;
     private String Id;
     private Usuario user;
     //modificacion usuario
@@ -61,30 +59,27 @@ public class GalleryFragment extends Fragment {
         mDataBase= FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
+       String id_usuario = mAuth.getUid();
         readuser();
 
         Nombre_Usuario = (TextView) root.findViewById(R.id.TV_NombrePerfil);
         Email = (TextView) root.findViewById(R.id.Email_texto);
-        Foto_perfil = (ImageView) root.findViewById(R.id.ImagenPerfil);
         Cambiar_mail = (EditText) root.findViewById(R.id.Email_Cambiar);
         Cambiar_username =(EditText) root.findViewById(R.id.Username_Cambiar);
-        Cambiar_Foto =(EditText) root.findViewById(R.id.Imagen_Cambiar);
         Boton_Editar =(Button) root.findViewById(R.id.Boton_Editar);
         Boton_Guardar =(Button) root.findViewById(R.id.Boton_Guardar);
+        //Toast.makeText(getActivity(),loggeado.getNombre_usuario().toString() , Toast.LENGTH_SHORT).show();
+        //Nombre_Usuario.setText(user.getNombre_usuario());
+        //Email.setText(user.getEmail());
 
-        Nombre_Usuario.setText(user.getNombre_usuario());
-        Email.setText(user.getEmail());
-        Picasso.get().load(user.getImagen_usuario()).fit().into(Foto_perfil);
 
         Boton_Editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Nombre_Usuario.setVisibility(View.INVISIBLE);
                 Email.setVisibility(View.INVISIBLE);
-                Cambiar_Foto.setVisibility(View.VISIBLE);
                 Cambiar_mail.setVisibility(View.VISIBLE);
                 Cambiar_username.setVisibility(View.VISIBLE);
-                Imagen_Texto.setVisibility(View.VISIBLE);
                 Boton_Guardar.setVisibility(View.VISIBLE);
 
                 Boton_Guardar.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +88,6 @@ public class GalleryFragment extends Fragment {
                         usermodificado = new Usuario();
                         usermodificado.setEmail(Cambiar_mail.getText().toString());
                         usermodificado.setNombre_usuario(Cambiar_username.getText().toString());
-                        usermodificado.setImagen_usuario(Cambiar_Foto.getText().toString());
                         mDataBase.push().setValue(usermodificado);
 
                     }
@@ -107,20 +101,21 @@ public class GalleryFragment extends Fragment {
         //sdf
     }
     private void readuser() {
-        mDataBase.child("Users").addValueEventListener(new ValueEventListener() {
+        mDataBase.child("Users");
+        mDataBase.child(mAuth.getUid());
+        mDataBase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
-                    user = new Usuario();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if(mAuth.getCurrentUser().getUid().equals(ds.getKey())){
                         Nombre = ds.child("name").getValue().toString();
                         mail = ds.child("email").getValue().toString();
-                        //Imagen =  ds.child("imagen").getValue().toString();
                         Id = ds.getKey();
-                        user = new Usuario( Id,Nombre, mail, Imagen);
-                        }
+                        user.setNombre_usuario(Nombre);
+                        user.setEmail(mail);
+                        Nombre_Usuario.setText(user.getNombre_usuario());
+                        Email.setText(user.getEmail());
 
 
                     }

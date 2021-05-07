@@ -8,11 +8,11 @@ public class Usuario {
     //private Factura[] facturas;
 
 
-    /*public Usuario(String idusuario, String nombre_usuario, String password) {
+    public Usuario(String idusuario, String nombre_usuario, String email) {
         Idusuario = idusuario;
         Nombre_usuario = nombre_usuario;
-        Email = password;
-    }*/
+        Email = email;
+    }
 
     public Usuario(String nombre_usuario, String password , Genero[] preferencias /*Factura[] facturas*/) {
         Nombre_usuario = nombre_usuario;

@@ -6,44 +6,26 @@
         android:layout_height="match_parent"
         >
 
-            <TextView
-                android:id="@+id/UsernameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ImagenPerfil"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="-117dp"
-                android:layout_toEndOf="@+id/ImagenPerfil"
-                android:text="Nombre de Usuario:" />
-
-        <ImageView
-            android:id="@+id/ImagenPerfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="48dp"
-            tools:src="@tools:sample/avatars" />
-
-            <TextView
+        <TextView
             android:id="@+id/Email_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="112dp"
-            android:layout_toEndOf="@+id/ImagenPerfil"
             android:text="Email:" />
 
-            <TextView
-                android:id="@+id/Email_texto"
-                android:layout_width="209dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="111dp"
-                android:layout_toEndOf="@+id/Email_TV" />
+        <TextView
+            android:id="@+id/Email_texto"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="111dp"
+            android:layout_toEndOf="@+id/Email_TV" />
 
-            <Button
+        <Button
             android:id="@+id/Boton_Editar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,42 +35,29 @@
             android:layout_marginBottom="433dp"
             android:text="Editar" />
 
-            <EditText
-                android:id="@+id/Username_Cambiar"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="255dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"
-                android:visibility="invisible" />
-
-            <EditText
-            android:id="@+id/Email_Cambiar"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/Username_Cambiar"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/Email_TV"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="-23dp"
-            android:layout_toEndOf="@+id/Email_TV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="126dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="144dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
             android:visibility="invisible" />
 
         <EditText
-            android:id="@+id/Imagen_Cambiar"
+            android:id="@+id/Email_Cambiar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/Imagen_TV"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="-26dp"
-            android:layout_toEndOf="@+id/Imagen_TV"
+            android:layout_alignTop="@+id/Email_TV"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="-9dp"
+            android:layout_toEndOf="@+id/Email_TV"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
@@ -98,32 +67,31 @@
             android:id="@+id/Boton_Guardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ImagenPerfil"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="141dp"
-            android:layout_marginBottom="366dp"
-            android:layout_toEndOf="@+id/ImagenPerfil"
+            android:layout_marginStart="153dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginBottom="363dp"
             android:text="Guardar"
             android:visibility="invisible" />
 
         <TextView
-            android:id="@+id/Imagen_TV"
+            android:id="@+id/Username_Texto"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="145dp" />
+
+        <TextView
+            android:id="@+id/UsernameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Email_TV"
-            android:layout_alignStart="@+id/Email_TV"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="40dp"
-            android:text="Imagen"
-            android:visibility="invisible" />
-
-            <TextView
-                android:id="@+id/Username_Texto"
-                android:layout_width="139dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="16dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="651dp"
+            android:text="Nombre de Usuario:" />
     </RelativeLayout>
