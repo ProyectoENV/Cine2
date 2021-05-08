@@ -3,6 +3,7 @@ package com.example.proyecto_cine.Cines;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,14 +56,15 @@ public class ActivityCines extends AppCompatActivity {
 
         //Recyclerview
         Lista_cines = new ArrayList<Cine>();
-        cardview = (CardView) findViewById(R.id.cardView);
+        cardview = (CardView) findViewById(R.id.cardView_cines);
         layoutManager = new LinearLayoutManager(this);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_cines);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
         Intent recibir_id  = getIntent();
-        if(recibir_id .hasExtra("id_pelicula")) {
+        if(recibir_id.hasExtra("id_pelicula")) {
             Bundle id_pelicula = recibir_id.getExtras();
             id_pel = id_pelicula.getString("id_pelicula");
         }
@@ -87,7 +89,7 @@ public class ActivityCines extends AppCompatActivity {
                     }
                 }
 
-                A_Adapter= new Adapter_cines(Lista_cines, R.layout.recyclerviewitem, new Adapter_cines.OnItemClickListener(){
+                A_Adapter= new Adapter_cines(Lista_cines, R.layout.recyclerviewitemcines, new Adapter_cines.OnItemClickListener(){
                     @Override
                     public void onItemClick(Cine cine, int position) {
 

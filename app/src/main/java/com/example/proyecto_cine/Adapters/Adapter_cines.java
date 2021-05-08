@@ -10,9 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto_cine.Objetos.Cine;
-import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -57,15 +55,17 @@ public class Adapter_cines extends RecyclerView.Adapter<Adapter_cines.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            Nombrecine = (TextView) itemView.findViewById(R.id.Nombrecine);
+            Nombrecine = (TextView) itemView.findViewById(R.id.nombrecine);
             Ubicacion = (TextView) itemView.findViewById(R.id.ubicacion);
             siguienteSala = (Button) itemView.findViewById(R.id.BotonCinesSiguiente);
 
         }
 
         public void bind(final Cine cine, final OnItemClickListener itemListener, final OnButtonClickListener btnListener) {
-            Nombrecine.setText(cine.getNombre());
-            Ubicacion.setText(cine.getLocalizacion());
+            String cine_nombre = cine.getNombre();
+            String cine_localizacion = cine.getLocalizacion();
+            Nombrecine.setText(cine_nombre);
+            Ubicacion.setText(cine_localizacion);
 
             siguienteSala.setOnClickListener(new View.OnClickListener() {
                 @Override

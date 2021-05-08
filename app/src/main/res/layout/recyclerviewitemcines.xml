@@ -1,6 +1,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
+    android:id="@+id/cardView_cines"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
@@ -27,7 +27,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Nombrecine"
+                    android:id="@+id/nombrecine"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
@@ -40,9 +40,9 @@
                     android:id="@+id/ubicacion"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:textSize="18sp"
+                    android:paddingLeft="5dp"
                     android:textColor="@color/black"
-                    android:paddingLeft="5dp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

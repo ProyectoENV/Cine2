@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="65dp"
             android:layout_marginTop="112dp"
             android:text="Email:" />
 
@@ -21,7 +21,7 @@
             android:layout_width="209dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="78dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="111dp"
             android:layout_toEndOf="@+id/Email_TV" />
 
@@ -30,9 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="162dp"
-            android:layout_marginBottom="433dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="159dp"
+            android:layout_marginTop="249dp"
             android:text="Editar" />
 
         <EditText
@@ -41,13 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="126dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="144dp"
+            android:layout_marginStart="195dp"
+            android:layout_marginTop="50dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
             android:visibility="invisible" />
 
         <EditText
@@ -55,24 +52,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/Email_TV"
-            android:layout_marginStart="78dp"
-            android:layout_marginTop="-9dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="-11dp"
             android:layout_toEndOf="@+id/Email_TV"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
             android:visibility="invisible" />
 
         <Button
             android:id="@+id/Boton_Guardar"
-            android:layout_width="wrap_content"
+            android:layout_width="89dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="153dp"
+            android:layout_marginStart="162dp"
             android:layout_marginTop="320dp"
-            android:layout_marginBottom="363dp"
             android:text="Guardar"
             android:visibility="invisible" />
 
@@ -80,18 +74,19 @@
             android:id="@+id/Username_Texto"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="62dp"
-            android:layout_marginEnd="145dp" />
+            android:layout_marginStart="201dp"
+            android:layout_marginTop="67dp" />
 
         <TextView
             android:id="@+id/UsernameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="651dp"
-            android:text="Nombre de Usuario:" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="69dp"
+            android:text="Nombre de Usuario:"
+            android:visibility="visible" />
     </RelativeLayout>

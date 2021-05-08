@@ -6,7 +6,7 @@ public class Cine {
     private String Localizacion;
 
     public Cine(String idCine, String nombre, String localizacion/*Pelicula[] peliculas_Cartelera, Sala[] salas_cine*/) {
-        idCine = idCine;
+        this.idCine = idCine;
         Nombre = nombre;
         Localizacion = localizacion;
         //Peliculas_Cartelera = peliculas_Cartelera;

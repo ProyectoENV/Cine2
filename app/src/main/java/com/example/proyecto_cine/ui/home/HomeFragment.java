@@ -68,9 +68,9 @@ public class HomeFragment extends Fragment {
 
         //Recyclerview
         Lista_peliculas = new ArrayList<Pelicula>();
-        cardview = (CardView) root.findViewById(R.id.cardView);
+        cardview = (CardView) root.findViewById(R.id.cardView_peliculas);
         layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView_pelicula);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 

@@ -38,7 +38,7 @@
         android:text="Name" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerView_pelicula"
         android:layout_width="395dp"
         android:layout_height="524dp"
         android:layout_below="@+id/BuscadorText"
