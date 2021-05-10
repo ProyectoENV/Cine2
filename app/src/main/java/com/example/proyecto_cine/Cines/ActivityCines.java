@@ -101,7 +101,7 @@ public class ActivityCines extends AppCompatActivity {
                     public void onButtonClick(Cine film, int position) {
 
                         // intent que pasa al acitivity de salas
-                        startActivity(new Intent(ActivityCines.this, botonera_entradas_activity.class)); //Cmabiar a la clase de salas
+                        //startActivity(new Intent(ActivityCines.this, botonera_entradas_activity.class)); //Cmabiar a la clase de salas
                     }
 
                 });

@@ -36,6 +36,7 @@ import java.util.Map;
 public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
+
     //UI
     private TextView Nombre_Usuario;
     private TextView Email;
@@ -43,14 +44,17 @@ public class GalleryFragment extends Fragment {
     private  EditText Cambiar_username;
     private Button Boton_Editar;
     private Button Boton_Guardar;
+
     //Database
     private DatabaseReference mDataBase;
     private FirebaseAuth mAuth;
+
     //Datos Usuario
     private String Nombre;
     private String mail;
     private String Id;
     private Usuario user;
+
     //modificacion usuario
     private Usuario usermodificado;
 
@@ -63,18 +67,17 @@ public class GalleryFragment extends Fragment {
 
         mDataBase= FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        //user = new Usuario();
+
 
         readuser();
+
         Nombre_Usuario = (TextView) root.findViewById(R.id.Username_Texto);
         Email = (TextView) root.findViewById(R.id.Email_texto);
         Cambiar_mail = (EditText) root.findViewById(R.id.Email_Cambiar);
         Cambiar_username =(EditText) root.findViewById(R.id.Username_Cambiar);
         Boton_Editar =(Button) root.findViewById(R.id.Boton_Editar);
         Boton_Guardar =(Button) root.findViewById(R.id.Boton_Guardar);
-        //Toast.makeText(getActivity(),loggeado.getNombre_usuario().toString() , Toast.LENGTH_SHORT).show();
-        //Nombre_Usuario.setText(user.getNombre_usuario());
-        //Email.setText(user.getEmail());
+
 
 
         Boton_Editar.setOnClickListener(new View.OnClickListener() {
@@ -128,18 +131,6 @@ public class GalleryFragment extends Fragment {
                     mail = (String) dataSnapshot.child("email").getValue();
                     Nombre_Usuario.setText(Nombre);
                     Email.setText(mail);
-                    /*for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                       ds.getChildren().getClass();
-                        Nombre = (String) ds.child("name").getValue();
-                        mail = (String) ds.child("email").getValue();
-                        Id = ds.getKey().;
-                        user.setNombre_usuario(Nombre);
-                        user.setEmail(mail);
-                        Nombre_Usuario.setText(user.getNombre_usuario());
-                        Email.setText(user.getEmail());
-
-
-                    }*/
                 }
 
             }
