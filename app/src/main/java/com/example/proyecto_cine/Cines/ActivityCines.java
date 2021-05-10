@@ -20,6 +20,7 @@ import com.example.proyecto_cine.Objetos.Cine;
 import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.R;
 import com.example.proyecto_cine.RegisterActivity;
+import com.example.proyecto_cine.Salas.ActivitySalas;
 import com.example.proyecto_cine.entradas.botonera_entradas_activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -83,7 +84,7 @@ public class ActivityCines extends AppCompatActivity {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         Nombre = ds.child("nombre_cine").getValue().toString();
                         Ubicacion = ds.child("localizacion_cine").getValue().toString();
-                        id = ds.getKey();
+                        id = ds.child("id_cine").getValue().toString();
                         Cine cine = new Cine(id,Nombre, Ubicacion);
                         Lista_cines.add(cine);
 
@@ -98,10 +99,14 @@ public class ActivityCines extends AppCompatActivity {
 
                 }, new Adapter_cines.OnButtonClickListener() {
                     @Override
-                    public void onButtonClick(Cine film, int position) {
+                    public void onButtonClick(Cine cinema, int position) {
 
                         // intent que pasa al acitivity de salas
                         //startActivity(new Intent(ActivityCines.this, botonera_entradas_activity.class)); //Cmabiar a la clase de salas
+                        Intent iniciar_activitiesala = new Intent(ActivityCines.this, ActivitySalas.class);
+                        iniciar_activitiesala.putExtra("id_cine",cinema.getIdCine() );
+                        iniciar_activitiesala.putExtra("id_pelicula",id_pelicula_buscar );
+                        startActivity(iniciar_activitiesala);
                     }
 
                 });

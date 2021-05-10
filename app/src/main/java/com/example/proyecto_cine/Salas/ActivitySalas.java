@@ -31,7 +31,8 @@ public class ActivitySalas extends AppCompatActivity {
     private String id;
     private String Hora;
     private String SalaPel;
-    private String id_Cine;
+    private String id_pelicula;
+    private int  id_Cine;
     //Recyclerview
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -59,29 +60,31 @@ public class ActivitySalas extends AppCompatActivity {
         Intent recibir_id  = getIntent();
         if(recibir_id.hasExtra("id_cine")) {
             Bundle id_cine = recibir_id.getExtras();
-            id_Cine = id_cine.getString("id_cine");
+            id_Cine = Integer.parseInt(id_cine.getString("id_cine"));
+            id_pelicula = id_cine.getString("id_pelicula");
         }
-
-        readSalas(id_Cine);
+        //id_pelicula.replace("'","");
+        readSalas(id_Cine, id_pelicula);
     }
 
-    private void readSalas(String id_cine_buscar) {
-        mDataBase.child("Peli_cine_sala_hora").orderByChild("id_cine").equalTo(id_cine_buscar).addValueEventListener(new ValueEventListener() {
+    private void readSalas(int id_cine_buscar, String id_pelicula) {
+        mDataBase.child("Peli_cine_sala_hora").orderByChild("id_pelicula").equalTo(id_pelicula).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 if (dataSnapshot.exists()) {
                     Lista_salas.clear();
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Hora = ds.child("hora").getValue().toString();
-                        SalaPel = ds.child("id_sala").getValue().toString();
-                        id = ds.getKey();
-                        Sala sala = new Sala(id,Hora, SalaPel);
-                        Lista_salas.add(sala);
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            int id_cine_bbdd =Integer.parseInt(ds.child("id_cine").getValue().toString());
+                            if (id_cine_buscar==id_cine_bbdd) {
+                            Hora = ds.child("hora").getValue().toString();
+                            SalaPel = ds.child("id_sala").getValue().toString();
+                            id = ds.getKey();
+                            Sala sala = new Sala(id, Hora, SalaPel);
+                            Lista_salas.add(sala);
 
+                        }
                     }
                 }
-
                 S_Adapter= new Adapter_salas(Lista_salas, R.layout.recyclerviewitemsalas, new Adapter_salas.OnItemClickListener(){
                     @Override
                     public void onItemClick(Sala sala, int position) {
