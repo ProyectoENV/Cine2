@@ -51,7 +51,7 @@ public class ActivityLogin extends AppCompatActivity {
                     UserLogin();
                 }else{
 
-                    Toast.makeText(ActivityLogin.this, "Comple los campos vacios", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogin.this, "Complete los campos vacios", Toast.LENGTH_SHORT).show();
                 }
             }
         });

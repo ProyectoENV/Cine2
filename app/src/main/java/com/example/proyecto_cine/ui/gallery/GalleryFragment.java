@@ -1,5 +1,6 @@
 package com.example.proyecto_cine.ui.gallery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.proyecto_cine.ActivityLogin;
+import com.example.proyecto_cine.MainActivity;
 import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.Objetos.Usuario;
 import com.example.proyecto_cine.R;
@@ -103,6 +105,8 @@ public class GalleryFragment extends Fragment {
                         map.put("/name/", usermodificado.getNombre_usuario());
                         map.put("/email/", usermodificado.getEmail());
                         mDataBase.child("Users").child(mAuth.getUid()).updateChildren(map);
+                        Intent volver_al_main = new Intent(getActivity(), MainActivity.class);
+                        startActivity(volver_al_main);
 
                     }
                 });

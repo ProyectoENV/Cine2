@@ -20,6 +20,7 @@ import com.example.proyecto_cine.Objetos.Cine;
 import com.example.proyecto_cine.Objetos.Pelicula;
 import com.example.proyecto_cine.R;
 import com.example.proyecto_cine.RegisterActivity;
+import com.example.proyecto_cine.entradas.botonera_entradas_activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -100,7 +101,7 @@ public class ActivityCines extends AppCompatActivity {
                     public void onButtonClick(Cine film, int position) {
 
                         // intent que pasa al acitivity de salas
-                        startActivity(new Intent(ActivityCines.this, MainActivity.class)); //Cmabiar a la clase de salas
+                        startActivity(new Intent(ActivityCines.this, botonera_entradas_activity.class)); //Cmabiar a la clase de salas
                     }
 
                 });
