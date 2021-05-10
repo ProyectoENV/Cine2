@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
-        <activity android:name=".entradas.botonera_entradas_activity"></activity>
-
-
+        <activity android:name=".Salas.ActivitySalas"></activity>
+        <activity android:name=".entradas.botonera_entradas_activity" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

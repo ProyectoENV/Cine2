@@ -1,8 +1,8 @@
 package com.example.proyecto_cine.Objetos;
 
 public class Sala {
-    private int idSala;
-    private int numerosala;
+    private String idSala;
+    private String Numerosala;
     private int fila;
     private int asiento;
     private int Asientos_ocupados;
@@ -10,26 +10,34 @@ public class Sala {
     private String Hora;
     private String ID_CINE;
 
-    public Sala(int numerosala, int fila, int asiento) {
-        this.numerosala = numerosala;
-        this.fila = fila;
-        this.asiento = asiento;
+    public Sala(String idSala, String hora, String numerosala) {
+        this.idSala = idSala;
+        Hora = hora;
+        Numerosala = numerosala;
     }
 
     public String getID_CINE() {
         return ID_CINE;
     }
 
-    public int getIdSala() {
+    public String getIdSala() {
         return idSala;
     }
 
-    public int getNumerosala() {
-        return numerosala;
+    public String getNumerosala() {
+        return Numerosala;
     }
 
-    public void setNumerosala(int numerosala) {
-        this.numerosala = numerosala;
+    public void setNumerosala(String numerosala) {
+        Numerosala = numerosala;
+    }
+
+    public String getHora() {
+        return Hora;
+    }
+
+    public void setHora(String hora) {
+        Hora = hora;
     }
 
     public int getFila() {
