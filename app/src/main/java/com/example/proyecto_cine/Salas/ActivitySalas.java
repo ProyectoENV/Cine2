@@ -14,6 +14,7 @@ import com.example.proyecto_cine.Adapters.Adapter_salas;
 import com.example.proyecto_cine.MainActivity;
 import com.example.proyecto_cine.Objetos.Sala;
 import com.example.proyecto_cine.R;
+import com.example.proyecto_cine.entradas.botonera_entradas_activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -95,7 +96,14 @@ public class ActivitySalas extends AppCompatActivity {
                     public void onButtonClick(Sala room, int position) {
 
                         // intent que pasa al acitivity de la entrada
-                        startActivity(new Intent(ActivitySalas.this, MainActivity.class)); //Cmabiar a la clase de salas
+                        //startActivity(new Intent(ActivitySalas.this, MainActivity.class)); //Cmabiar a la clase de salas
+
+                        Intent iniciar_activitieEntrada = new Intent(ActivitySalas.this, botonera_entradas_activity.class);
+                        iniciar_activitieEntrada.putExtra("id_sala",room.getIdSala());
+                        iniciar_activitieEntrada.putExtra("hora",room.getHora() );
+                        iniciar_activitieEntrada.putExtra("id_pelicula",id_pelicula );
+                        iniciar_activitieEntrada.putExtra("id_cine",id_cine_buscar );
+                        startActivity(iniciar_activitieEntrada);
                     }
 
                 });
