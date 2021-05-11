@@ -63,7 +63,6 @@ public class ActivitySalas extends AppCompatActivity {
             id_Cine = Integer.parseInt(id_cine.getString("id_cine"));
             id_pelicula = id_cine.getString("id_pelicula");
         }
-        //id_pelicula.replace("'","");
         readSalas(id_Cine, id_pelicula);
     }
 

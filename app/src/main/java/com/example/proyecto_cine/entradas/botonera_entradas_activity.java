@@ -89,10 +89,11 @@ public class botonera_entradas_activity extends AppCompatActivity {
 
     }
     public void buscarasientos(String id_pelicula_sala, String id_cine_sala, String id_sala_sala, String hora){
-        mDataBase.child("Peli_cine_sala_hora").orderByChild("id_pelicula").equalTo(id_pelicula_sala).orderByChild("id_cine").equalTo(id_cine_sala).orderByChild("id_sala").equalTo(id_sala_sala).orderByChild("hora").equalTo(hora).addValueEventListener(new ValueEventListener() {
+        mDataBase.child("Peli_cine_sala_hora").orderByChild("id_pelicula").equalTo(id_pelicula_sala).addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
             }
 
             @Override
