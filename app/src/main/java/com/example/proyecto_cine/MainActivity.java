@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //fhjghjgf
         mDataBase = FirebaseDatabase.getInstance().getReference();
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         resetasientos(currentTime);
