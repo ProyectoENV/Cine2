@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Api {
-    public static final String BASE_URL = "http://www.omdbapi.com/";
+    public static final String BASE_URL = "https://www.omdbapi.com/";
 
     private static Retrofit retrofit = null;
 

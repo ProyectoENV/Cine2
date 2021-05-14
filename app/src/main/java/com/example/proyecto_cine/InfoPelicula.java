@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -78,6 +79,7 @@ public class InfoPelicula extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Pelicula> call, Throwable t) {
+                    Log.d("prueba", "onFailure() returned: " + t.getMessage());
                     Toast.makeText(InfoPelicula.this, "Error", Toast.LENGTH_LONG).show();
                 }
             });

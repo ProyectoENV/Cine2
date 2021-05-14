@@ -12,14 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
         <activity android:name=".Salas.ActivitySalas"></activity>
-        <activity android:name=".entradas.botonera_entradas_activity" />
-        <!--
-               Set to true if your app is Standalone, that is, it does not require the handheld
-               app to run.
-        -->
-        <meta-data
-            android:name="com.google.android.wearable.standalone"
-            android:value="true" />
+        <activity android:name=".entradas.botonera_entradas_activity" android:screenOrientation="landscape"/>
 
         <activity android:name=".Cines.ActivityCines" />
         <activity android:name=".InfoPelicula" />

@@ -11,15 +11,15 @@
         >
 
         <TableLayout
-            android:layout_width="542dp"
-            android:layout_height="297dp"
-            android:layout_alignParentStart="false"
+            android:layout_width="727dp"
+            android:layout_height="299dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="false"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="130dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="-60dp">
 
             <TableRow

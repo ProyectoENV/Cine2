@@ -82,13 +82,23 @@ public class ActivityCines extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Lista_cines.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Nombre = ds.child("nombre_cine").getValue().toString();
-                        Ubicacion = ds.child("localizacion_cine").getValue().toString();
-                        id = ds.child("id_cine").getValue().toString();
-                        Cine cine = new Cine(id,Nombre, Ubicacion);
-                        Lista_cines.add(cine);
+                            int id_cine= Integer.parseInt(ds.child("id_cine").getValue().toString());
+                            boolean repetido = false;
+                            for (Cine c: Lista_cines) {
+                                if(Integer.parseInt(c.getIdCine())==id_cine){
+                                    repetido = true;
+                                }
+                            }
+                            if(repetido == false){
+                                Nombre = ds.child("nombre_cine").getValue().toString();
+                                Ubicacion = ds.child("localizacion_cine").getValue().toString();
+                                id = ds.child("id_cine").getValue().toString();
+                                Cine cine = new Cine(id,Nombre, Ubicacion);
+                                Lista_cines.add(cine);
+                            }
 
                     }
+
                 }
 
                 A_Adapter= new Adapter_cines(Lista_cines, R.layout.recyclerviewitemcines, new Adapter_cines.OnItemClickListener(){
