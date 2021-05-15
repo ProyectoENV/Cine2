@@ -2,6 +2,7 @@ package com.example.proyecto_cine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -30,7 +31,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //fhjghjgf
         mDataBase = FirebaseDatabase.getInstance().getReference();
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        currentTime = currentTime.replace(":","");
         resetasientos(currentTime);
 
         Intent RecogerUsuario = getIntent();
@@ -91,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         String hora_sala=ds.child("hora").getValue().toString();
+                        String id_tabla = ds.getKey();
+                        hora_sala= hora_sala.replace(":","");
+                        int horaintactual = Integer.parseInt(hora_actual);
+                        int horaintsala = Integer.parseInt(hora_sala);
+                        if(horaintactual>horaintsala){
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("/asientos_ocupados/", "");
+                            mDataBase.child("Peli_cine_sala_hora").child(id_tabla).updateChildren(map);
+                        }
                     }
                 }
             }
