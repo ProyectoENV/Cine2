@@ -5,10 +5,8 @@ public class Sala {
     private String Numerosala;
     private int fila;
     private int asiento;
-    private int Asientos_ocupados;
-    private int Capacidad_asientos;
     private String Hora;
-    private String ID_CINE;
+    private String Dia;
 
     public Sala(String idSala, String hora, String numerosala) {
         this.idSala = idSala;
@@ -16,9 +14,6 @@ public class Sala {
         Numerosala = numerosala;
     }
 
-    public String getID_CINE() {
-        return ID_CINE;
-    }
 
     public String getIdSala() {
         return idSala;

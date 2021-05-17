@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 
 import com.example.proyecto_cine.Adapters.Adapter_salas;
@@ -21,8 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ActivitySalas extends AppCompatActivity {
 
@@ -65,6 +69,7 @@ public class ActivitySalas extends AppCompatActivity {
             id_pelicula = id_cine.getString("id_pelicula");
         }
         readSalas(id_Cine, id_pelicula);
+
     }
 
     private void readSalas(int id_cine_buscar, String id_pelicula) {
@@ -85,6 +90,21 @@ public class ActivitySalas extends AppCompatActivity {
                         }
                     }
                 }
+
+                //Comprobacion hora para poner dia acorde la hora
+                String horaActual = new SimpleDateFormat("dd:HH:mm", Locale.getDefault()).format(new Date());
+                horaActual = horaActual.replace(":","");
+                int hora_actual_int = Integer.parseInt(horaActual);
+                String diaActual = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+                int dia_actual_int=Integer.parseInt(diaActual);
+
+                for (Sala sala:Lista_salas) {
+                    String diahora = sala.getNumerosala()+dia_actual_int;
+                    if(hora_actual_int>Integer.parseInt(diahora)){
+                        dia_actual_int++;
+                    }
+                }
+                Log.d("hora",dia_actual_int+"");
                 S_Adapter= new Adapter_salas(Lista_salas, R.layout.recyclerviewitemsalas, new Adapter_salas.OnItemClickListener(){
                     @Override
                     public void onItemClick(Sala sala, int position) {

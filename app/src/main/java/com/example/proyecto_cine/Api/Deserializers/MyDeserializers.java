@@ -24,4 +24,5 @@ public class MyDeserializers implements JsonDeserializer<Pelicula> {
 
         return peli;
     }
+
 }

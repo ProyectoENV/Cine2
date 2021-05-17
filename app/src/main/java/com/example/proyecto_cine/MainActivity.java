@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //fhjghjgf
         mDataBase = FirebaseDatabase.getInstance().getReference();
+
+        //Limpieza de los asientos en funcion de la hora
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         currentTime = currentTime.replace(":","");
         resetasientos(currentTime);
