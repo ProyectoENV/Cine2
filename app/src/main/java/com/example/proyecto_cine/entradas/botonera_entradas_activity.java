@@ -37,7 +37,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
     //id tabla
     String id_tabla;
 
-    private ArrayList<Integer> id_asientos_ocupados;
+    private static ArrayList<Integer> id_asientos_ocupados;
 
     private ArrayList<Integer> id_asientos_reservados;
 
