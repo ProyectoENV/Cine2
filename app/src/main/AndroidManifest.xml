@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
-        <activity android:name=".Cines.ActivityEntrada"></activity>
+        <activity android:name=".Pagos.Pagos"></activity>
+        <activity android:name=".Cines.ActivityEntrada" />
         <activity android:name=".Salas.ActivitySalas" />
         <activity
             android:name=".entradas.botonera_entradas_activity"

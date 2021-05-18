@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.proyecto_cine.Cines.ActivityEntrada;
 import com.example.proyecto_cine.Objetos.Cine;
 import com.example.proyecto_cine.Objetos.Sala;
 import com.example.proyecto_cine.R;
@@ -40,6 +41,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
     private static ArrayList<Integer> id_asientos_ocupados;
 
     private ArrayList<Integer> id_asientos_reservados;
+    private ArrayList<String> id_asientos_reservados_string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
         mDataBase = FirebaseDatabase.getInstance().getReference();
         id_asientos_ocupados= new ArrayList<>();
         id_asientos_reservados= new ArrayList<>();
+        id_asientos_reservados_string = new ArrayList<>();
         botones = new ImageButton[4][10];
         siguiente = (Button) findViewById(R.id.entradas_seleccionadas_boton);
         Intent recogida = getIntent();
@@ -79,6 +82,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
         for( int i =0;i<4;i++){
             for( int j =0;j<10;j++){
                 String boton = "boton"+i+"_"+j;
+                String fila_columna = i+"_"+j;
                 int id=getResources().getIdentifier(boton,"id",getPackageName());
                 int f=i,h=j;
                 botones[i][j] = (ImageButton) findViewById(id);
@@ -93,10 +97,15 @@ public class botonera_entradas_activity extends AppCompatActivity {
                         if(id_asientos_reservados.contains(id) ){
                             int index_borrar=id_asientos_reservados.indexOf(id);
                             id_asientos_reservados.remove(index_borrar);
+
+                            int index_borrar2=id_asientos_reservados_string.indexOf(fila_columna);
+                            id_asientos_reservados_string.remove(index_borrar2);
+
                             int id_imagen =R.drawable.butaca_libre;
                             botones[f][h].setImageResource(id_imagen);
                         }else{
                         id_asientos_reservados.add(id);
+                        id_asientos_reservados_string.add(fila_columna);
                         int id_imagen =R.drawable.butaca_reservada;
                         botones[f][h].setImageResource(id_imagen);
                         }
@@ -120,9 +129,16 @@ public class botonera_entradas_activity extends AppCompatActivity {
                     for (int id:id_asientos_reservados) {
                         id_reserva=id_reserva+id+",";
                     }
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("/asientos_ocupados/", id_reserva);
-                    mDataBase.child("Peli_cine_sala_hora").child(id_tabla).updateChildren(map);
+
+                    Intent entrada_activity = new Intent(botonera_entradas_activity.this, ActivityEntrada.class);
+                    entrada_activity.putExtra("id_cine_e", id_cine_sala);
+                    entrada_activity.putExtra("id_sala_e", id_sala_sala);
+                    entrada_activity.putExtra("id_pelicula", id_pelicula_sala);
+                    entrada_activity.putExtra("hora_e", hora);
+                    entrada_activity.putStringArrayListExtra("asientos_reservados_string_e",id_asientos_reservados_string );
+                    entrada_activity.putExtra("asientos_ocupados_mas_reservas", id_reserva);
+                    startActivity(entrada_activity);
+
                 }
             }
         });
