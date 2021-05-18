@@ -39,8 +39,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_pelicula"
-        android:layout_width="395dp"
-        android:layout_height="524dp"
+        android:layout_width="884dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/BuscadorText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"

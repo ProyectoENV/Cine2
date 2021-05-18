@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
         mEditTextNameRegister = (EditText) findViewById(R.id.NameEditTextRegister);
         mEditTextEmailRegister = (EditText) findViewById(R.id.EmailEditTextRegister);
         mEditTextPasswordRegister = (EditText) findViewById(R.id.PasswordEditTextRegister);
-        mEditTextFotoRegister = (EditText) findViewById(R.id.FotoEditTextRegister);
         btnRegistrarRegister = (Button) findViewById(R.id.BtnRegistarRegister);
 
         btnRegistrarRegister.setOnClickListener(new View.OnClickListener() {
