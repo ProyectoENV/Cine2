@@ -27,14 +27,14 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEditTextEmailRegister;
     private EditText mEditTextPasswordRegister;
     private EditText mEditTextNameRegister;
-    private EditText mEditTextFotoRegister;
+    //private EditText mEditTextFotoRegister;
     private Button btnRegistrarRegister;
 
     //Variables de los datos
     private String name = "";
     private String email = "";
     private String password = "";
-    private String urlfoto = "";
+    //private String urlfoto = "";
 
 
     @Override
@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEditTextNameRegister = (EditText) findViewById(R.id.NameEditTextRegister);
         mEditTextEmailRegister = (EditText) findViewById(R.id.EmailEditTextRegister);
         mEditTextPasswordRegister = (EditText) findViewById(R.id.PasswordEditTextRegister);
-        mEditTextFotoRegister = (EditText) findViewById(R.id.FotoEditTextRegister);
+        //mEditTextFotoRegister = (EditText) findViewById(R.id.FotoEditTextRegister);
         btnRegistrarRegister = (Button) findViewById(R.id.BtnRegistarRegister);
 
         btnRegistrarRegister.setOnClickListener(new View.OnClickListener() {
