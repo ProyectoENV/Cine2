@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.proyecto_cine">
+    package="com.example.proyectocine">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -11,16 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
-        <activity android:name=".Pagos.Pagos"></activity>
-        <activity android:name=".Cines.ActivityEntrada" />
-        <activity android:name=".Salas.ActivitySalas" />
+        <activity android:name="com.example.proyectocine.Pagos.pagar"></activity>
+        <activity android:name="com.example.proyectocine.Cines.ActivityEntrada" />
+        <activity android:name="com.example.proyectocine.Salas.ActivitySalas" />
         <activity
-            android:name=".entradas.botonera_entradas_activity"
+            android:name="com.example.proyectocine.entradas.botonera_entradas_activity"
             android:screenOrientation="landscape" />
-        <activity android:name=".Cines.ActivityCines" />
-        <activity android:name=".InfoPelicula" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ActivityLogin">
+        <activity android:name="com.example.proyectocine.Cines.ActivityCines" />
+        <activity android:name="com.example.proyectocine.InfoPelicula" />
+        <activity android:name="com.example.proyectocine.RegisterActivity" />
+        <activity android:name="com.example.proyectocine.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +29,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.proyectocine.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Proyecto_Cine.NoActionBar" />
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
