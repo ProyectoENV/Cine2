@@ -4,58 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context="com.example.proyectocine.RegisterActivity" >
+
+    <EditText
+        android:id="@+id/NameEditTextRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/EmailEditTextRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/PasswordEditTextRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:gravity="bottom"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/NameEditTextRegister"
+        <Button
+            android:id="@+id/BtnRegistarRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/EmailEditTextRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/PasswordEditTextRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_margin="15dp"
-            android:gravity="top"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/BtnRegistarRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Registar nuevo usuario" />
-        </LinearLayout>
+            android:text="Registar nuevo usuario" />
     </LinearLayout>
 </LinearLayout>

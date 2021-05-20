@@ -1,0 +1,8 @@
+package com.example.proyectocine.Pagos.Config;
+
+public class PayPalConfig {
+
+    //CÓDIGO EXTRAÍDO DE LA CUENTA "SANDBOX" PARA HACER LAS PRUEBAS
+    //EN CASO DE QUERER HACER TRANSACCIONES REALES SE DEBE CONSEGUIR EL CÓDIGO DE UNA CUENTA BUSINESS "REAL"
+    public static final String PAYPAL_CLIENT_ID="AQE1uhFd2ERTVkjdG9AbJpe1bsU1YjF5mQ78AsovwU_TRwhz-4AOc9Rj3PVIUB7qnowy6tYgQjMlkdoX";
+}

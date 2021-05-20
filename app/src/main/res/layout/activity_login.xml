@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ActivityLogin">
+    tools:context="com.example.proyectocine.ActivityLogin">
 
     <LinearLayout
         android:layout_width="match_parent"
