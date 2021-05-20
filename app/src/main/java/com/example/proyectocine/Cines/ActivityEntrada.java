@@ -122,15 +122,7 @@ public class ActivityEntrada extends AppCompatActivity {
                 /*Map<String, Object> map = new HashMap<>();
                 map.put("/asientos_ocupados/", Lista_ocupados_mas_reservas);
                 mDataBase.child("Peli_cine_entrada_hora").child(id_tabla).updateChildren(map);*/
-                /*DropInRequest dropInRequest = new DropInRequest()
-                        .tokenizationKey("sandbox_ykqb274b_mvff8qnfg33dynj6");
-                try {
-                    mBraintreeFragment = BraintreeFragment.newInstance(ActivityEntrada.this, dropInRequest.getAuthorization());
-                } catch (InvalidArgumentException e) {
-                    e.printStackTrace();
-                }
 
-                startActivityForResult(dropInRequest.getIntent(ActivityEntrada.this), REQUEST_CODE);*/
 
                 try {
                     onBraintreeSubmit();
@@ -138,49 +130,6 @@ public class ActivityEntrada extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //startActivity(new Intent(ActivityEntrada.this, pagar.class));
-
-                //intent activity pagar
-                /*ThreeDSecurePostalAddress billingAddress = new ThreeDSecurePostalAddress()
-                        .givenName("Jill")
-                        .surname("Doe")
-                        .phoneNumber("5551234567")
-                        .streetAddress("555 Smith St")
-                        .extendedAddress("#2")
-                        .locality("Chicago")
-                        .region("IL")
-                        .postalCode("12345")
-                        .countryCodeAlpha2("US");
-
-                ThreeDSecureRequest threedSecureRequest = new ThreeDSecureRequest()
-                        .amount("1.00")
-                        .versionRequested(ThreeDSecureRequest.VERSION_2)
-                        .email("test@email.com")
-                        .mobilePhoneNumber("3125551234")
-                        .billingAddress(billingAddress);
-
-
-        // Optional additional information.
-        // For best results, provide as many of these elements as possible.
-                ThreeDSecureAdditionalInformation additionalInformation = new ThreeDSecureAdditionalInformation()
-                        .accountId("account-id");
-
-                DropInRequest dropInRequest = new DropInRequest()
-                        .clientToken(mAuthorization)
-                        .requestThreeDSecureVerification(true)
-                        .threeDSecureRequest(threedSecureRequest);
-                dropInRequest = new DropInRequest()
-                        .clientToken(mClientToken);
-
-                startActivityForResult(dropInRequest.getIntent(ActivityEntrada.this), DROP_IN_REQUEST);*/
-               //onBraintreeSubmit();
-               /* try {
-                    mBraintreeFragment = BraintreeFragment.newInstance(ActivityEntrada.this,mAuthorization.toString());
-                } catch (InvalidArgumentException e) {
-                    e.printStackTrace();
-                }*/
-
-                //guardar factura bbdd;
 
             }
         });
@@ -198,29 +147,13 @@ public class ActivityEntrada extends AppCompatActivity {
         PayPalRequest requestP = new PayPalRequest(total+"")
                 .currencyCode("EUR")
                 .intent(PayPalRequest.INTENT_AUTHORIZE);
-        PayPal.requestOneTimePayment(mBraintreeFragment, requestP);
+        //PayPal.requestOneTimePayment(mBraintreeFragment, requestP);
         dropInRequest.paypalRequest(requestP);
         startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE);
     }
 
 
-    public void onPaymentMethodNonceCreated(@NotNull PaymentMethodNonce paymentMethodNonce) {
-        // Send nonce to server
-        String nonce = paymentMethodNonce.getNonce();
-        if (paymentMethodNonce instanceof PayPalAccountNonce) {
-            PayPalAccountNonce payPalAccountNonce = (PayPalAccountNonce)paymentMethodNonce;
 
-            // Access additional information
-            String email = payPalAccountNonce.getEmail();
-            String firstName = payPalAccountNonce.getFirstName();
-            String lastName = payPalAccountNonce.getLastName();
-            String phone = payPalAccountNonce.getPhone();
-
-            // See PostalAddress.java for details
-            PostalAddress billingAddress = payPalAccountNonce.getBillingAddress();
-            PostalAddress shippingAddress = payPalAccountNonce.getShippingAddress();
-        }
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -229,7 +162,7 @@ public class ActivityEntrada extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 Log.d("Pagotest", "onactivityresult bien");
-                onPaymentMethodNonceCreated(result.getPaymentMethodNonce());
+                //onPaymentMethodNonceCreated(result.getPaymentMethodNonce());
 
 
 
