@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 
-import com.example.proyectocine.R;
+import com.example.proyectocine.LoginRegister.ActivityLogin;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;

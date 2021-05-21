@@ -1,4 +1,4 @@
-package com.example.proyectocine;
+package com.example.proyectocine.LoginRegister;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,7 +76,7 @@ public class ActivityLogin extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-                    Intent intentUser = new Intent(ActivityLogin.this,MainActivity.class);
+                    Intent intentUser = new Intent(ActivityLogin.this, MainActivity.class);
                     intentUser.putExtra("Mail",email);
                     startActivity(intentUser);/*
                     startActivity(new Intent(ActivityLogin.this, MainActivity.class));*/

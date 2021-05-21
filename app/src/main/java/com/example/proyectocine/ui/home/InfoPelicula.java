@@ -1,4 +1,4 @@
-package com.example.proyectocine;
+package com.example.proyectocine.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
