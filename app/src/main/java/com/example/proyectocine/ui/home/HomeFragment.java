@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectocine.Adapters.Adapter_pelicula;
 import com.example.proyectocine.Cines.ActivityCines;
-import com.example.proyectocine.InfoPelicula;
 import com.example.proyectocine.Objetos.Pelicula;
 import com.example.proyectocine.R;
 import com.google.firebase.database.DataSnapshot;

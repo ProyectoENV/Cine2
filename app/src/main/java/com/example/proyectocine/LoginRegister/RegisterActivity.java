@@ -1,4 +1,4 @@
-package com.example.proyectocine;
+package com.example.proyectocine.LoginRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

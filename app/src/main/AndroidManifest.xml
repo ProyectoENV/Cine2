@@ -19,9 +19,9 @@
             android:name="com.example.proyectocine.entradas.botonera_entradas_activity"
             android:screenOrientation="landscape" />
         <activity android:name="com.example.proyectocine.Cines.ActivityCines" />
-        <activity android:name="com.example.proyectocine.InfoPelicula" />
-        <activity android:name="com.example.proyectocine.RegisterActivity" />
-        <activity android:name="com.example.proyectocine.ActivityLogin">
+        <activity android:name="com.example.proyectocine.ui.home.InfoPelicula" />
+        <activity android:name="com.example.proyectocine.LoginRegister.RegisterActivity" />
+        <activity android:name="com.example.proyectocine.LoginRegister.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
