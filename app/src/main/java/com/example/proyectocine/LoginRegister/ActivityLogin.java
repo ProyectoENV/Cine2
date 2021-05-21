@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +35,13 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // comprobacion internet
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
 
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
         //instanciamos la base de datos y los campos
         mAuth = FirebaseAuth.getInstance();
         mEditTextEmail = (EditText) findViewById(R.id.EmailEditTextLogin);
@@ -45,6 +53,7 @@ public class ActivityLogin extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isConnected == true ){
                 email = mEditTextEmail.getText().toString();
                 password = mEditTextPassword.getText().toString();
 
@@ -54,6 +63,9 @@ public class ActivityLogin extends AppCompatActivity {
                 }else{
 
                     Toast.makeText(ActivityLogin.this, "Complete los campos vacios", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                    Toast.makeText(ActivityLogin.this,"Conecte su dispositivo a internet antes de hacer el login", Toast.LENGTH_LONG).show();
                 }
             }
         });

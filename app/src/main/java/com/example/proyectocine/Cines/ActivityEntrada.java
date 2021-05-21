@@ -62,9 +62,6 @@ public class ActivityEntrada extends AppCompatActivity {
 
     //cosas pagar
     private BraintreeFragment mBraintreeFragment ;
-    private Authorization mAuthorization ;
-    private String  mClientToken = "Token";
-    private      int DROP_IN_REQUEST = 1;
     private      int REQUEST_CODE = 2048;
 
 
