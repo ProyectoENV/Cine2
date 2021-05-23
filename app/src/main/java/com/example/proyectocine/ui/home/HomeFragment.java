@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     private String Sinopsis;
     private String Imagen ;
     private int Año;
-    private java.lang.String Genero;
+    private String Genero;
     //Recyclerview
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;

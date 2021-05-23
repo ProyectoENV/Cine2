@@ -84,6 +84,7 @@ public class GalleryFragment extends Fragment {
 
         mDataBase= FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
         facturas = new ArrayList<>();
         cardview = (CardView) root.findViewById(R.id.cardView_facturas);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -93,6 +94,7 @@ public class GalleryFragment extends Fragment {
 
 
         readuser();
+        readfacturas();
 
         Nombre_Usuario = (TextView) root.findViewById(R.id.Username_Texto);
         Email = (TextView) root.findViewById(R.id.Email_texto);
@@ -138,7 +140,7 @@ public class GalleryFragment extends Fragment {
                 });
             }
         });
-        readfacturas();
+
 
         return root;
 
@@ -154,25 +156,27 @@ public class GalleryFragment extends Fragment {
                             facturas.clear();
                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                 if(Id.equals(mAuth.getUid())){
-                                 id_pelicula=ds.child("id_pelicula").toString();
-                                 id_sala=ds.child("id_sala").toString();
-                                 id_cine=ds.child("id_cine").toString();
-                                 entradas=ds.child("numero_entradas").toString();
-                                 hora=ds.child("hora").toString();
-                                 dia=ds.child("dia").toString();
-                                 fecha_compra=ds.child("fecha_compra").toString();
+                                 id_pelicula=ds.child("id_pelicula").getValue().toString();
+                                 id_sala=ds.child("id_sala").getValue().toString();
+                                 id_cine=ds.child("id_cine").getValue().toString();
+                                 entradas=ds.child("numero_entradas").getValue().toString();
+                                 hora=ds.child("hora").getValue().toString();
+                                 dia=ds.child("dia").getValue().toString();
+                                 fecha_compra=ds.child("fecha_compra").getValue().toString();
                                 Factura factura = new Factura(Nombre,id_pelicula,id_cine,id_sala,entradas,hora,dia,fecha_compra);
                                 facturas.add(factura);
                                 }
                             }
                         }
 
-                       fAdacpter = new Adapter_facturas(facturas, R.id.recyclerviewfacturas, new Adapter_facturas.OnItemClickListener() {
+                       fAdacpter = new Adapter_facturas(facturas, R.layout.recyclerviewitemfacturas, new Adapter_facturas.OnItemClickListener() {
                            @Override
                            public void onItemClick(Factura city, int position) {
                                //Activiti de mostrar informacion opcional
                            }
+
                        });
+                        recyclerView.setAdapter(fAdacpter);
                     }
 
                     @Override

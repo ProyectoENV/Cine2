@@ -81,6 +81,8 @@ public class ActivityEntrada extends AppCompatActivity {
     //factura
     private  String dia;
     private DatabaseReference mDataBaseFactura;
+    private String nombrePeli;
+    private String nombreCine;
 
 
     @Override
@@ -192,7 +194,7 @@ public class ActivityEntrada extends AppCompatActivity {
                 mDataBase.child("Peli_cine_sala_hora").child(id_tabla).updateChildren(map);
                 String currentday = new SimpleDateFormat("dd-HH-mm", Locale.getDefault()).format(new Date());
 
-                Factura factura = new Factura(mAuth.getUid(), id_pelicula_entrada,id_cine_entrada+"",id_sala_entrada+"",id_asientos_reservados.size()+"",hora_entrada,dia,currentday);
+                Factura factura = new Factura(mAuth.getUid(), nombrePeli,nombreCine,id_sala_entrada+"",id_asientos_reservados.size()+"",hora_entrada,dia,currentday);
                 mDataBaseFactura.push().setValue(factura);
 
 
@@ -220,6 +222,7 @@ public class ActivityEntrada extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String nombre_peli = (String) snapshot.child("nombre").getValue();
                     nombre[0] = nombre_peli;
+                    nombrePeli= nombre_peli;
                     pelicula.setText(nombre[0]);
 
             }
@@ -240,11 +243,15 @@ public class ActivityEntrada extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    if(hora.equals(ds.child("hora").toString())){
+                    String hora_peli = ds.child("hora").getValue().toString();
+                    //String h= hora_peli.replace(":","");
+                    //hora.toString();
+                    if(hora_entrada.equals(hora_peli)){
                     String nombre_cine = (String) ds.child("nombre_cine").getValue();
                    nombre[0] = nombre_cine;
+                   nombreCine= nombre_cine;
                     cine.setText(nombre[0]);
-                    dia = (String) ds.child("dia").getValue();
+                    dia =  ds.child("dia").getValue().toString();
                     }
                 }
 
