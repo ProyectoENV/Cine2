@@ -97,7 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                 mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(task1 -> {
 
                     if(task1.isSuccessful()){
-                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        Intent main = new Intent(RegisterActivity.this, MainActivity.class);
+                        main.putExtra("Mail",email);
+                        startActivity(main);
                         finish();
                     }else{
                         Toast.makeText(RegisterActivity.this, "El usuario no se ha creado corectamente", Toast.LENGTH_SHORT).show();
