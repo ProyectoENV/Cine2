@@ -14,8 +14,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyectocine.Cines.ActivityEntrada;
-import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.R;
+import com.example.proyectocine.ui.MainActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,7 +57,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
                 activeNetwork.isConnectedOrConnecting();
         if(isConnected == false ){
             Toast.makeText(this,"Conecte su dispositivo a internet antes  continuar", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         }
         mDataBase = FirebaseDatabase.getInstance().getReference();
         id_asientos_ocupados= new ArrayList<>();

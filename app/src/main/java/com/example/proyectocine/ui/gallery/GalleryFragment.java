@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectocine.Adapters.Adapter_facturas;
-import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.ui.MainActivity;
 import com.example.proyectocine.Objetos.Factura;
 import com.example.proyectocine.Objetos.Pelicula;
 import com.example.proyectocine.Objetos.Usuario;

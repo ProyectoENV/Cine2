@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.ui.MainActivity;
 import com.example.proyectocine.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

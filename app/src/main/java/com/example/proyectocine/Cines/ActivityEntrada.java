@@ -19,7 +19,7 @@ import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.braintreepayments.api.exceptions.InvalidArgumentException;
 import com.braintreepayments.api.models.PayPalRequest;
-import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.ui.MainActivity;
 import com.example.proyectocine.Objetos.Factura;
 import com.example.proyectocine.R;
 import com.google.firebase.auth.FirebaseAuth;

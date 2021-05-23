@@ -1,4 +1,4 @@
-package com.example.proyectocine;
+package com.example.proyectocine.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.example.proyectocine.LoginRegister.ActivityLogin;
+import com.example.proyectocine.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;

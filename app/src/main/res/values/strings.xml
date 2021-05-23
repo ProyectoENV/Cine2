@@ -9,6 +9,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_Informacion">Información</string>
+    <string name="menu_Perfil">Perfil</string>
+    <string name="menu_Peliculas">Películas</string>
     <string name="title_activity_info_pelicula">Info_pelicula</string>
     <!--
     This string is used for square devices and overridden by hello_world in

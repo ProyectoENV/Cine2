@@ -20,11 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectocine.Adapters.Adapter_pelicula;
 import com.example.proyectocine.Cines.ActivityCines;
-import com.example.proyectocine.LoginRegister.ActivityLogin;
-import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.ui.MainActivity;
 import com.example.proyectocine.Objetos.Pelicula;
 import com.example.proyectocine.R;
-import com.example.proyectocine.entradas.botonera_entradas_activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

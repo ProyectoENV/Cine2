@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.proyectocine.MainActivity"
+            android:name="com.example.proyectocine.ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Proyecto_Cine.NoActionBar" />
         <activity
