@@ -52,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Limpieza de los asientos en funcion de la hora
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String currentday = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
         currentTime = currentTime.replace(":","");
-        resetasientos(currentTime);
+        resetasientos(currentTime, currentday);
 
         Intent RecogerUsuario = getIntent();
         if(RecogerUsuario.hasExtra("Mail")){
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void resetasientos(String hora_actual) {
+    private void resetasientos(String hora_actual, String Currentday) {
         mDataBase.child("Peli_cine_sala_hora").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,10 +100,15 @@ public class MainActivity extends AppCompatActivity {
                         String hora_sala=ds.child("hora").getValue().toString();
                         String id_tabla = ds.getKey();
                         hora_sala= hora_sala.replace(":","");
+                        String dia = ds.child("dia").getValue().toString();
                         int horaintactual = Integer.parseInt(hora_actual);
                         int horaintsala = Integer.parseInt(hora_sala);
-                        if(horaintactual>horaintsala){
+                        int diaintsal = Integer.parseInt(dia);
+                        int diaintactual = Integer.parseInt(Currentday);
+                        if(horaintactual>horaintsala&&diaintsal==diaintactual){
+                            diaintactual++;
                             Map<String, Object> map = new HashMap<>();
+                            map.put("/dia/",diaintactual);
                             map.put("/asientos_ocupados/", "");
                             mDataBase.child("Peli_cine_sala_hora").child(id_tabla).updateChildren(map);
                         }

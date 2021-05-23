@@ -2,7 +2,10 @@ package com.example.proyectocine.LoginRegister;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.paypal.android.sdk.payments.LoginActivity;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -31,17 +35,12 @@ public class ActivityLogin extends AppCompatActivity {
     private String email = "";
     private String password = "";
 
+    private boolean isConnected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // comprobacion internet
-        ConnectivityManager cm =
-                (ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
         //instanciamos la base de datos y los campos
         mAuth = FirebaseAuth.getInstance();
         mEditTextEmail = (EditText) findViewById(R.id.EmailEditTextLogin);
@@ -53,6 +52,12 @@ public class ActivityLogin extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ConnectivityManager cm =
+                        (ConnectivityManager)ActivityLogin.this.getSystemService(ActivityLogin.this.CONNECTIVITY_SERVICE);
+
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                isConnected = activeNetwork != null &&
+                        activeNetwork.isConnectedOrConnecting();
                 if(isConnected == true ){
                 email = mEditTextEmail.getText().toString();
                 password = mEditTextPassword.getText().toString();

@@ -8,10 +8,11 @@ public class Sala {
     private String Hora;
     private String Dia;
 
-    public Sala(String idSala, String hora, String numerosala) {
+    public Sala(String idSala, String hora, String numerosala, String dia) {
         this.idSala = idSala;
         Hora = hora;
         Numerosala = numerosala;
+        this.Dia = dia;
     }
 
 
@@ -49,5 +50,9 @@ public class Sala {
 
     public void setAsiento(int asiento) {
         this.asiento = asiento;
+    }
+
+    public String getDia() {
+        return Dia;
     }
 }

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyectocine.Cines.ActivityEntrada;
+import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,10 +42,23 @@ public class botonera_entradas_activity extends AppCompatActivity {
     private ArrayList<Integer> id_asientos_reservados;
     private ArrayList<String> id_asientos_reservados_string;
 
+    private boolean isConnected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botonera_entradas_activity);
+
+        ConnectivityManager cm =
+                (ConnectivityManager)botonera_entradas_activity.this.getSystemService(this.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if(isConnected == false ){
+            Toast.makeText(this,"Conecte su dispositivo a internet antes  continuar", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this,MainActivity.class));
+        }
         mDataBase = FirebaseDatabase.getInstance().getReference();
         id_asientos_ocupados= new ArrayList<>();
         id_asientos_reservados= new ArrayList<>();
@@ -133,6 +149,7 @@ public class botonera_entradas_activity extends AppCompatActivity {
                     entrada_activity.putExtra("hora_e", hora);
                     entrada_activity.putStringArrayListExtra("asientos_reservados_string_e",id_asientos_reservados_string );
                     entrada_activity.putExtra("asientos_ocupados_mas_reservas", id_reserva);
+                    entrada_activity.putExtra("id_tabla_e", id_tabla );
                     startActivity(entrada_activity);
 
                 }

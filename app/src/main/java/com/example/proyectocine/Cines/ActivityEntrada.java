@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.braintreepayments.api.BraintreeFragment;
 import com.braintreepayments.api.LocalPayment;
@@ -23,7 +26,11 @@ import com.braintreepayments.api.models.PayPalAccountNonce;
 import com.braintreepayments.api.models.PayPalRequest;
 import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.braintreepayments.api.models.PostalAddress;
+import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.Objetos.Factura;
 import com.example.proyectocine.R;
+import com.example.proyectocine.entradas.botonera_entradas_activity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,13 +41,19 @@ import com.paypal.api.payments.Transaction;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 
 public class ActivityEntrada extends AppCompatActivity {
 
     //bbdd
     private DatabaseReference mDataBase;
+    private FirebaseAuth mAuth;
 
     //Variables para recibir intent
     private String id_pelicula_entrada;
@@ -64,15 +77,30 @@ public class ActivityEntrada extends AppCompatActivity {
     private BraintreeFragment mBraintreeFragment ;
     private      int REQUEST_CODE = 2048;
 
-
+    private boolean isConnected;
+    //factura
+    private  String dia;
+    private DatabaseReference mDataBaseFactura;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrada);
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(this.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if(isConnected == false ){
+            Toast.makeText(this,"Conecte su dispositivo a internet antes de proceder al pago", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, MainActivity.class));
+        }
 
         mDataBase = FirebaseDatabase.getInstance().getReference();
+        mDataBaseFactura = FirebaseDatabase.getInstance().getReference().child("Factura");
+        mAuth = FirebaseAuth.getInstance();
 
         cine = findViewById(R.id.NombreCine);
         pelicula = findViewById(R.id.Nombrepel);
@@ -96,6 +124,7 @@ public class ActivityEntrada extends AppCompatActivity {
             hora_entrada = traer_datos.getString("hora_e");
             id_asientos_reservados = traer_datos.getStringArrayList("asientos_reservados_string_e");
             Lista_ocupados_mas_reservas = traer_datos.getString("asientos_ocupados_mas_reservas");
+            id_tabla=  traer_datos.getString("id_tabla_e");
         }
         String filas="";
         String Columnas = "";
@@ -144,7 +173,6 @@ public class ActivityEntrada extends AppCompatActivity {
         PayPalRequest requestP = new PayPalRequest(total+"")
                 .currencyCode("EUR")
                 .intent(PayPalRequest.INTENT_AUTHORIZE);
-        //PayPal.requestOneTimePayment(mBraintreeFragment, requestP);
         dropInRequest.paypalRequest(requestP);
         startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE);
     }
@@ -159,8 +187,16 @@ public class ActivityEntrada extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 Log.d("Pagotest", "onactivityresult bien");
-                //onPaymentMethodNonceCreated(result.getPaymentMethodNonce());
+                Map<String, Object> map = new HashMap<>();
+                map.put("/asientos_ocupados/", Lista_ocupados_mas_reservas);
+                mDataBase.child("Peli_cine_sala_hora").child(id_tabla).updateChildren(map);
+                String currentday = new SimpleDateFormat("dd-HH-mm", Locale.getDefault()).format(new Date());
 
+                Factura factura = new Factura(mAuth.getUid(), id_pelicula_entrada,id_cine_entrada+"",id_sala_entrada+"",id_asientos_reservados.size()+"",hora_entrada,dia,currentday);
+                mDataBaseFactura.push().setValue(factura);
+
+
+                startActivity(new Intent(this,MainActivity.class));
 
 
                 // use the result to update your UI and send the payment method nonce to your server
@@ -204,9 +240,12 @@ public class ActivityEntrada extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
+                    if(hora.equals(ds.child("hora").toString())){
                     String nombre_cine = (String) ds.child("nombre_cine").getValue();
                    nombre[0] = nombre_cine;
                     cine.setText(nombre[0]);
+                    dia = (String) ds.child("dia").getValue();
+                    }
                 }
 
             }

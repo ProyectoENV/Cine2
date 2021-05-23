@@ -1,6 +1,8 @@
 package com.example.proyectocine.ui.home;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectocine.Adapters.Adapter_pelicula;
 import com.example.proyectocine.Cines.ActivityCines;
+import com.example.proyectocine.LoginRegister.ActivityLogin;
+import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.Objetos.Pelicula;
 import com.example.proyectocine.R;
+import com.example.proyectocine.entradas.botonera_entradas_activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +57,7 @@ public class HomeFragment extends Fragment {
     private Button BT_Buscador;
 
     private HomeViewModel homeViewModel;
+    private boolean isConnected;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,6 +80,13 @@ public class HomeFragment extends Fragment {
         BT_Buscador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ConnectivityManager cm =
+                        (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                isConnected = activeNetwork != null &&
+                        activeNetwork.isConnectedOrConnecting();
+                if(isConnected == true ){
                 Pelicula_buscar = ET_Buscador.getText().toString();
                 if(Pelicula_buscar=="" || Pelicula_buscar.equals("Name")){
                     Toast.makeText(getContext(),"Introduzca el titulo de una pelicula", Toast.LENGTH_LONG);
@@ -90,6 +103,9 @@ public class HomeFragment extends Fragment {
                 intentinfo.putExtra("Titulo",Pelicula_buscar);
                 intentinfo.putExtra("insertardatos", insertardatos);
                 startActivity(intentinfo);}
+                }else{
+                    Toast.makeText(getContext(),"Conecte su dispositivo a internet antes continuar ", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -122,11 +138,22 @@ public class HomeFragment extends Fragment {
                  P_Adapter= new Adapter_pelicula(Lista_peliculas, R.layout.recyclerviewitem, new Adapter_pelicula.OnItemClickListener(){
                      @Override
                      public void onItemClick(Pelicula film, int position) {
-                        boolean insertardatos= false;
+                         ConnectivityManager cm =
+                                 (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+
+                         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                         isConnected = activeNetwork != null &&
+                                 activeNetwork.isConnectedOrConnecting();
+                         if(isConnected == false ){
+                             Toast.makeText(getActivity(),"Conecte su dispositivo a internet antes de hacer el continuar", Toast.LENGTH_LONG).show();
+                             startActivity(new Intent(getActivity(), MainActivity.class));
+                         }else{
+                         boolean insertardatos= false;
                         Intent mostarinfo = new Intent(getActivity(), InfoPelicula.class);
                         mostarinfo.putExtra("Titulo",film.getNombre() );
                         mostarinfo.putExtra("insertardatos",insertardatos);
                         startActivity(mostarinfo);
+                         }
                      }
 
                 }, new Adapter_pelicula.OnButtonClickListener() {

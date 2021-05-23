@@ -54,7 +54,7 @@ public class ActivitySalas extends AppCompatActivity {
 
         //Recyclerview
         Lista_salas = new ArrayList<Sala>();
-        cardview = (CardView) findViewById(R.id.cardView_salas);
+        cardview = (CardView) findViewById(R.id.cardView_facturas);
         layoutManager = new LinearLayoutManager(this);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_salas);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -82,8 +82,9 @@ public class ActivitySalas extends AppCompatActivity {
                             if (id_cine_buscar==id_cine_bbdd) {
                             Hora = ds.child("hora").getValue().toString();
                             SalaPel = ds.child("id_sala").getValue().toString();
+                            String Dia = ds.child("dia").getValue().toString();
                             id = ds.getKey();
-                            Sala sala = new Sala(id, Hora, SalaPel);
+                            Sala sala = new Sala(id, Hora, SalaPel, Dia);
                             Lista_salas.add(sala);
 
                         }

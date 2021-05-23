@@ -1,6 +1,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView_salas"
+    android:id="@+id/cardView_facturas"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
@@ -29,7 +29,7 @@
                 <TextView
                     android:id="@+id/hora"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
@@ -37,10 +37,16 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/dia"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:paddingLeft="10dp" />
+
+                <TextView
                     android:id="@+id/sala"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 

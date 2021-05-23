@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectocine.Adapters.Adapter_facturas;
 import com.example.proyectocine.MainActivity;
+import com.example.proyectocine.Objetos.Factura;
+import com.example.proyectocine.Objetos.Pelicula;
 import com.example.proyectocine.Objetos.Usuario;
 import com.example.proyectocine.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +61,20 @@ public class GalleryFragment extends Fragment {
     //modificacion usuario
     private Usuario usermodificado;
 
+    //Facturas
+    private ArrayList<Factura>facturas;
+    private Adapter_facturas fAdacpter;
+    private String id_pelicula;
+    private String id_sala;
+    private String id_cine;
+    private String entradas;
+    private String hora;
+    private String dia;
+    private String fecha_compra;
+    //facturas UI
+    private CardView cardview;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +84,12 @@ public class GalleryFragment extends Fragment {
 
         mDataBase= FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+        facturas = new ArrayList<>();
+        cardview = (CardView) root.findViewById(R.id.cardView_facturas);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerviewfacturas);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
 
 
         readuser();
@@ -108,12 +138,52 @@ public class GalleryFragment extends Fragment {
                 });
             }
         });
-
+        readfacturas();
 
         return root;
 
         //sdf
     }
+
+    private void readfacturas() {
+        mDataBase.child("Factura").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.exists()) {
+                            facturas.clear();
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if(Id.equals(mAuth.getUid())){
+                                 id_pelicula=ds.child("id_pelicula").toString();
+                                 id_sala=ds.child("id_sala").toString();
+                                 id_cine=ds.child("id_cine").toString();
+                                 entradas=ds.child("numero_entradas").toString();
+                                 hora=ds.child("hora").toString();
+                                 dia=ds.child("dia").toString();
+                                 fecha_compra=ds.child("fecha_compra").toString();
+                                Factura factura = new Factura(Nombre,id_pelicula,id_cine,id_sala,entradas,hora,dia,fecha_compra);
+                                facturas.add(factura);
+                                }
+                            }
+                        }
+
+                       fAdacpter = new Adapter_facturas(facturas, R.id.recyclerviewfacturas, new Adapter_facturas.OnItemClickListener() {
+                           @Override
+                           public void onItemClick(Factura city, int position) {
+                               //Activiti de mostrar informacion opcional
+                           }
+                       });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+
+
     private void readuser() {
         mDataBase.child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,6 +194,7 @@ public class GalleryFragment extends Fragment {
                     mail = (String) dataSnapshot.child("email").getValue();
                     Nombre_Usuario.setText(Nombre);
                     Email.setText(mail);
+                    Id = dataSnapshot.getKey();
                 }
 
             }

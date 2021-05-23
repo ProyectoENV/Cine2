@@ -52,6 +52,7 @@ public class Adapter_salas extends RecyclerView.Adapter<Adapter_salas.ViewHolder
         public TextView HoraPeli;
         public TextView SalaPeli;
         public Button siguienteEntrada;
+        private  TextView dia;
 
 
         public ViewHolder(View itemView) {
@@ -59,6 +60,7 @@ public class Adapter_salas extends RecyclerView.Adapter<Adapter_salas.ViewHolder
             HoraPeli = (TextView) itemView.findViewById(R.id.hora);
             SalaPeli = (TextView) itemView.findViewById(R.id.sala);
             siguienteEntrada = (Button) itemView.findViewById(R.id.BotonSalasSiguiente);
+            dia = (TextView)itemView.findViewById(R.id.dia);
 
         }
 
@@ -67,6 +69,7 @@ public class Adapter_salas extends RecyclerView.Adapter<Adapter_salas.ViewHolder
             String sala_peli = sala.getNumerosala();
             HoraPeli.setText(hora_peli);
             SalaPeli.setText(sala_peli);
+            dia.setText(sala.getDia());
 
             siguienteEntrada.setOnClickListener(new View.OnClickListener() {
                 @Override
