@@ -12,16 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Cine">
-        <activity android:name="com.example.proyectocine.Pagos.pagar"></activity>
-        <activity android:name="com.example.proyectocine.Cines.ActivityEntrada" />
-        <activity android:name="com.example.proyectocine.Salas.ActivitySalas" />
+        <activity android:name=".Cines.Sincines"></activity>
+        <activity android:name=".Pagos.pagar" />
+        <activity android:name=".Cines.ActivityEntrada" />
+        <activity android:name=".Salas.ActivitySalas" />
         <activity
-            android:name="com.example.proyectocine.entradas.botonera_entradas_activity"
+            android:name=".entradas.botonera_entradas_activity"
             android:screenOrientation="landscape" />
-        <activity android:name="com.example.proyectocine.Cines.ActivityCines" />
-        <activity android:name="com.example.proyectocine.ui.home.InfoPelicula" />
-        <activity android:name="com.example.proyectocine.LoginRegister.RegisterActivity" />
-        <activity android:name="com.example.proyectocine.LoginRegister.ActivityLogin">
+        <activity android:name=".Cines.ActivityCines" />
+        <activity android:name=".ui.home.InfoPelicula" />
+        <activity android:name=".LoginRegister.RegisterActivity" />
+        <activity android:name=".LoginRegister.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.proyectocine.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Proyecto_Cine.NoActionBar" />
         <activity
@@ -37,8 +38,10 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="${applicationId}.braintree" />
             </intent-filter>
         </activity>

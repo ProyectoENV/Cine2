@@ -91,7 +91,9 @@ public class ActivityCines extends AppCompatActivity {
                     }
 
                 }
-
+                if(Lista_cines.size()==0){
+                startActivity(new Intent(ActivityCines.this,Sincines.class));
+                }
                 A_Adapter= new Adapter_cines(Lista_cines, R.layout.recyclerviewitemcines, new Adapter_cines.OnItemClickListener(){
                     @Override
                     public void onItemClick(Cine cine, int position) {
