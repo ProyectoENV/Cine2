@@ -1,8 +1,5 @@
 package com.example.proyectocine.Cines;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,31 +10,24 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.braintreepayments.api.BraintreeFragment;
-import com.braintreepayments.api.LocalPayment;
-import com.braintreepayments.api.PayPal;
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.braintreepayments.api.exceptions.InvalidArgumentException;
-import com.braintreepayments.api.models.Authorization;
-import com.braintreepayments.api.models.LocalPaymentRequest;
-import com.braintreepayments.api.models.PayPalAccountNonce;
 import com.braintreepayments.api.models.PayPalRequest;
-import com.braintreepayments.api.models.PaymentMethodNonce;
-import com.braintreepayments.api.models.PostalAddress;
 import com.example.proyectocine.MainActivity;
 import com.example.proyectocine.Objetos.Factura;
 import com.example.proyectocine.R;
-import com.example.proyectocine.entradas.botonera_entradas_activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.paypal.api.payments.Amount;
-import com.paypal.api.payments.Transaction;
 
 import org.jetbrains.annotations.NotNull;
 

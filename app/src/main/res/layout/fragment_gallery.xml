@@ -14,6 +14,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="65dp"
             android:layout_marginTop="112dp"
+            android:gravity="center"
             android:text="Email:" />
 
         <TextView
@@ -23,20 +24,22 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="111dp"
-            android:layout_toEndOf="@+id/Email_TV" />
+            android:layout_toEndOf="@+id/Email_TV"
+            android:gravity="center" />
 
-            <Button
-                android:id="@+id/Boton_Editar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="161dp"
-                android:layout_marginTop="167dp"
-                android:text="Editar" />
+        <Button
+            android:id="@+id/Boton_Editar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="167dp"
+            android:gravity="center"
+            android:text="Editar" />
 
-            <EditText
+        <EditText
             android:id="@+id/Username_Cambiar"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
@@ -45,6 +48,7 @@
             android:layout_marginStart="195dp"
             android:layout_marginTop="50dp"
             android:ems="10"
+            android:gravity="center"
             android:inputType="textPersonName"
             android:visibility="invisible" />
 
@@ -57,29 +61,32 @@
             android:layout_marginTop="-11dp"
             android:layout_toEndOf="@+id/Email_TV"
             android:ems="10"
+            android:gravity="center"
             android:inputType="textPersonName"
             android:visibility="invisible" />
 
-            <Button
-                android:id="@+id/Boton_Guardar"
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="162dp"
-                android:layout_marginTop="210dp"
-                android:text="Guardar"
-                android:visibility="invisible" />
+        <Button
+            android:id="@+id/Boton_Guardar"
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="162dp"
+            android:layout_marginTop="210dp"
+            android:gravity="center"
+            android:text="Guardar"
+            android:visibility="invisible" />
 
-            <TextView
+        <TextView
             android:id="@+id/Username_Texto"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="201dp"
-            android:layout_marginTop="67dp" />
+            android:layout_marginTop="67dp"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/UsernameTV"
@@ -89,6 +96,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="66dp"
             android:layout_marginTop="69dp"
+            android:gravity="center"
             android:text="Nombre de Usuario:"
             android:visibility="visible" />
 

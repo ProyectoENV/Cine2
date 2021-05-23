@@ -2,6 +2,7 @@ package com.example.proyectocine.ui.gallery;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +97,8 @@ public class GalleryFragment extends Fragment {
         readuser();
         readfacturas();
 
+
+
         Nombre_Usuario = (TextView) root.findViewById(R.id.Username_Texto);
         Email = (TextView) root.findViewById(R.id.Email_texto);
         Cambiar_mail = (EditText) root.findViewById(R.id.Email_Cambiar);
@@ -148,14 +151,14 @@ public class GalleryFragment extends Fragment {
     }
 
     private void readfacturas() {
-        mDataBase.child("Factura").addValueEventListener(new ValueEventListener() {
+        mDataBase.child("Factura").orderByChild("id_user").equalTo(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         if (dataSnapshot.exists()) {
                             facturas.clear();
                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                if(Id.equals(mAuth.getUid())){
+                                if(Id.equals(mAuth.getCurrentUser().getUid())){
                                  id_pelicula=ds.child("id_pelicula").getValue().toString();
                                  id_sala=ds.child("id_sala").getValue().toString();
                                  id_cine=ds.child("id_cine").getValue().toString();
@@ -168,15 +171,15 @@ public class GalleryFragment extends Fragment {
                                 }
                             }
                         }
+                        fAdacpter = new Adapter_facturas(facturas, R.layout.recyclerviewitemfacturas, new Adapter_facturas.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(Factura city, int position) {
+                                //Activiti de mostrar informacion opcional
+                            }
 
-                       fAdacpter = new Adapter_facturas(facturas, R.layout.recyclerviewitemfacturas, new Adapter_facturas.OnItemClickListener() {
-                           @Override
-                           public void onItemClick(Factura city, int position) {
-                               //Activiti de mostrar informacion opcional
-                           }
-
-                       });
+                        });
                         recyclerView.setAdapter(fAdacpter);
+
                     }
 
                     @Override
