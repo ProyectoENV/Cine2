@@ -78,6 +78,7 @@ public class ActivityEntrada extends AppCompatActivity {
     private      int REQUEST_CODE = 2048;
 
     private boolean isConnected;
+
     //factura
     private  String dia;
     private DatabaseReference mDataBaseFactura;
@@ -112,11 +113,6 @@ public class ActivityEntrada extends AppCompatActivity {
         columna = findViewById(R.id.Columna);
         pagar = findViewById(R.id.entradas_seleccionadas_boton);
 
-
-        //insercion de los asientos ocupados
-        /*Map<String, Object> map = new HashMap<>();
-        map.put("/asientos_ocupados/", id_reserva);
-        mDataBase.child("Peli_cine_entrada_hora").child(id_tabla).updateChildren(map);*/
         Intent recibir_datos = getIntent();
         Bundle traer_datos = recibir_datos.getExtras();
         if(recibir_datos.hasExtra("id_cine_e")){
@@ -147,18 +143,11 @@ public class ActivityEntrada extends AppCompatActivity {
         pagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Map<String, Object> map = new HashMap<>();
-                map.put("/asientos_ocupados/", Lista_ocupados_mas_reservas);
-                mDataBase.child("Peli_cine_entrada_hora").child(id_tabla).updateChildren(map);*/
-
-
                 try {
                     onBraintreeSubmit();
                 } catch (InvalidArgumentException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 
